@@ -4,7 +4,7 @@ title: Macros
 ---
 
 # Target calculation
-- Total = maintenance - 15% = 2500–2750* 0.85 = 2125—2337 calories
+- Total calories = maintenance - 15% = 2500–2750* 0.85 = 2125—2337 calories
 - Protein 1.2g/pound = ~220g = 1144 calories
 - Fat: >= 20% = >=425 calories = 48g
 - Carbs = <= 556 calories = 139g
@@ -14,7 +14,18 @@ title: Macros
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
 
-<div id="today-content" style="padding-top:6em;"></div>
+Table: Actual/Target
+<table id="today-content"></table>
+
+Add a food:
+<form id="add-a-food">
+<label for="food">Food:</label>
+<input type="text" id="food" name="food">
+<button type="submit">Add</button>
+</form>
+
+Foods:
+<ul id="foods"></ul>
 
 </div>
 <div class="w3-half w3-container" id="view"></div>

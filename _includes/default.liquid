@@ -242,6 +242,15 @@
     // div.innerHTML = actuals[date_string()]
   }
 
+  function show_foods() {
+    var div = document.getElementById("foods")
+    var text = "<ul>"
+    for (food of actuals[date_string()]) {
+        text = text+"<li>"+food+"</li>"
+    }
+    div.innerHTML = text+"</ul>"
+  }
+
   function date_string() {
     var today = new Date()
     var dd = String(today.getDate()).padStart(2, '0')
@@ -252,6 +261,7 @@
   }
 
   show_today()
+  show_foods()
   plot_radial()
 </script>
 </html>
