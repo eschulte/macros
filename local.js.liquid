@@ -1,0 +1,42 @@
+foods = {
+  'bread': {'total': {'calories':120}, 'protein':{'grams':5}, 'carbs':{'grams':26}},
+  'tuna': {'total': {'calories':260}, 'protein':{'grams':16}, 'fat':{'grams':15}, 'carbs':{'grams':26}},
+  'egg': {'total': {'calories':78}, 'protein':{'grams':6}, 'fat':{'grams':5}},
+  'egg yolk': {'total': {'calories':55}, 'protein':{'grams':2.7}, 'fat':{'grams':4.5}},
+  'whey': {'total': {'calories':130}, 'protein':{'grams':25}, 'fat':{'grams':2.5}, 'carbs':{'grams':2}},
+  'banana': {'total': {'calories':110}, 'protein':{'grams':1}, 'carbs':{'grams':28}},
+  'tofu' : {'total': {'calories':83}, 'protein':{'grams':10}, 'fat':{'grams':5}, 'carbs':{'grams':2}},
+  'whey banana': ['whey', 'banana'],
+  'strawberry shortbread': {},
+  'tuna bread': ['tuna', 'bread'],
+  // half coke, more representative of a mixed drink
+  'coke': {'total': {'calories':70}, 'carbs':{'grams':20}},
+  'gin': {'total': {'calories':70}, 'carbs':{'grams':20}},
+  'whiskey': {'total': {'calories':70}, 'carbs':{'grams':20}},
+  'gin and coke': ['gin', 'coke'],
+  'whiskey coke': ['whiskey', 'coke'],
+  'ipa': {'total': {'calories':211}, 'carbs':{'grams':16}},
+  'ramen' : {'total': {'calories':490}, 'protein':{'grams':10}, 'fat':{'grams':15}, 'carbs':{'grams':79}},
+  'ramen w/tofu': ['ramen', 'tofu'],
+  'egg toast': ['egg', 'bread'],
+  // Meals
+  'soy sauce pan fried noodles': {'total': {'calories':387}, 'protein':{'grams':9}, 'fat':{'grams':25}, 'carbs':{'grams':35}},
+  'hunan chicken': {'total': {'calories':635}, 'protein':{'grams':20}, 'fat':{'grams':48}, 'carbs':{'grams':34}},
+}
+
+// - Protein 1.2g/pound = ~220g = 1144 calories
+// - Fat: >= 20% = >=425 calories = 48g
+// - Carbs = <= 556 calories = 139g
+// - Total = maintenance - 15% = 2500–2750* 0.85 = 2125—2337
+targets = { '2021-04-03': {'total': {'calories':2230},
+                           'protein': {'grams':220, 'calories':1144},
+                           'fat': {'grams':48, 'calories':425},
+                           'carbs': {'grams':129, 'calories':139}} }
+
+actuals = {
+  '2021-04-03': ['strawberry shortbread', 'egg toast', 'tuna bread', 'whey', 'gin and coke', 'gin and coke', 'gin and coke'],
+  '2021-04-04': ['hunan chicken', 'strawberry shortbread', 'tuna bread', 'whey', 'cidergeist', 'cidergeist'],
+  '2021-04-05': ['strawberry shortbread', 'whey', 'tuna bread', 'whey', 'hunan chicken', 'ipa', 'ipa'],
+  '2021-04-06': ['whey banana', 'ramen w/tofu', 'soy sauce pan fried noodles', 'ipa', 'ipa'],
+  '2021-04-07': ['egg toast', 'egg yolk', 'egg yolk', 'whey', '0.5xramen', '2xegg'],
+}

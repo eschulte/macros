@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal macro tracking.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- By Eric Schulte, source at https://github.com/eschulte/macros. -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
+    <!-- <link rel="stylesheet" href="{{ "/style.css"|url }}"> -->
+    <!-- <link rel="icon" href="{{ "/favicon.ico" |url }}"> -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="{{ "/macros.js" |url }}"></script>
+    <script src="{{ "/local.js" |url }}"></script>
+  </head>
+<body class="w3-light-grey">
+  <div class="w3-container">
+    {{ content | safe }}
+  </div>
+</body>
+
+<script>
+  function show_today() {
+    var div = document.getElementById("today-content");
+    // div.innerHTML = macros(date_string());
+    div.innerHTML = actuals[date_string()];
+  }
+
+  function date_string() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    return yyyy + "-" + mm + '-' + dd;
+  }
+
+  show_today()
+</script>
+</html>

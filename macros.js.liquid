@@ -17,11 +17,24 @@ function macro_plus(one, two){
                   }}
 }
 
+function portion(portion, base) {
+  return {'total': {'calories': (base['total'] && base['total']['calories'] || 0) * portion },
+          'protein':{'grams': (base['protein'] && base['protein']['grams'] || 0) * portion },
+          'fat':{'grams': (base['fat'] && base['fat']['grams'] || 0) * portion },
+          'carbs':{'grams': (base['carbs'] && base['carbs']['grams'] || 0) * portion }}
+}
+
 function macros(food){
   if (typeof food === 'string') {
     if(foods[food] === undefined){
       if(actuals[food] === undefined){
-        throw("undefined food: '"+food+"'")
+        portion_re = /^([\d.]+)x(.*)$/
+        if(food.search(portion_re) === 0){
+          let match = portion_re.exec(food)
+          return portion(match[1], macros(match[2]))
+        } else {
+          throw("undefined food: '"+food+"'")
+        }
       } else {
         return macros(actuals[food])
       }
