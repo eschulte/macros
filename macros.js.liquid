@@ -49,3 +49,8 @@ function macros(food){
     throw("bad argument to macros: '"+food+"'")
   }
 }
+
+function get_target() {
+  let vals = Object.values(targets)
+  return vals[vals.length - 1]
+}
