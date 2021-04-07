@@ -25,6 +25,7 @@
   function macro_table(macros) {
     let tgt = get_target()
     return "<table>"+
+      "<tr><th></th><th>actual/target</th></tr>"+
       "<tr><th>Total</th><td style='text-align:center'>"+macros['total']['calories']+"/"+tgt['total']['calories']+"cal</td></tr>"+
       "<tr><th>Protein</th><td style='text-align:center'>"+macros['protein']['grams']+"/"+tgt['protein']['grams']+"g</td></tr>"+
       "<tr><th>Fat</th><td style='text-align:center'>"+macros['fat']['grams']+"/"+tgt['fat']['grams']+"g</td></tr>"+

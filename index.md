@@ -14,12 +14,10 @@ title: Macros
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
 
-Table: Actual/Target
-<table id="today-content"></table>
+<table id="today-content"></table></br>
 
-Add a food:
 <form id="add-a-food">
-<label for="food">Food:</label>
+<label for="food">Add a food:</label>
 <input type="text" id="food" name="food">
 <button type="submit">Add</button>
 </form>
