@@ -12,6 +12,8 @@
     <!-- <link rel="stylesheet" href="{{ "/style.css"|url }}"> -->
     <!-- <link rel="icon" href="{{ "/favicon.ico" |url }}"> -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.3.2/dist/css/autoComplete.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.3.2/dist/js/autoComplete.min.js"></script>
     <script src="{{ "/macros.js" |url }}"></script>
     <script src="{{ "/local.js" |url }}"></script>
   </head>
@@ -264,5 +266,6 @@
   show_today()
   show_foods()
   plot_radial()
+  new autoComplete({ data: Object.keys(foods) })
 </script>
 </html>
