@@ -247,8 +247,11 @@
   function show_foods() {
     var div = document.getElementById("foods")
     var text = "<ul>"
+    var index = 0
     for (food of actuals[date_string()]) {
-        text = text+"<li>"+food+"</li>"
+      // Add onclick to remove this ID from the food list.
+      text = text+"<li onclick='drop_food("+index+")'>"+food+"</li>"
+      index = index + 1
     }
     div.innerHTML = text+"</ul>"
   }
@@ -260,6 +263,34 @@
     var yyyy = today.getFullYear()
 
     return yyyy + "-" + mm + '-' + dd
+  }
+
+  function drop_food(index){
+    actuals[date_string()].splice(index, 1)
+  }
+
+  function add_food(){
+    actuals[date_string()].push(document.getElementById("add-food").value)
+  }
+
+  // local storage:
+  // explicit JSON serialization needed
+
+  function lget(name) {
+    if (window.localStorage.getItem(name) === undefined){
+      throw("Local storage missing for: "+name)
+    } else {
+      return undefined
+    }
+  }
+  function lset(name, value) {
+    return undefined
+  }
+
+  if (typeof(Storage) !== "undefined") {
+    // Don't overwrite, but initialize if not already present.
+  } else {
+    alert("Not usable without local storage")
   }
 
   show_today()

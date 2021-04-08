@@ -16,13 +16,13 @@ title: Macros
 
 <table id="today-content"></table></br>
 
-<form id="add-a-food">
-<label for="food">Add a food:</label>
+<form id="add-a-food" onsubmit="add_food()">
+<label for="food">Ate:</label>
 <input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
 <button type="submit">Add</button>
 </form>
 
-Foods:
+Foods today:
 <ul id="foods"></ul>
 
 </div>
