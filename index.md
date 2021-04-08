@@ -18,7 +18,7 @@ title: Macros
 
 <form id="add-a-food">
 <label for="food">Add a food:</label>
-<input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
+<input type="text" id="food" name="food">
 <button type="submit">Add</button>
 </form>
 
