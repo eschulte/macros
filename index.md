@@ -27,7 +27,7 @@ So for me this all works out to:
 
 <table id="today-content"></table></br>
 
-<form id="add-a-food" onsubmit="add_food()">
+<form action="#" id="add-a-food" onsubmit="add_food();return false">
 <label for="food">Ate:</label>
 <input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
 <button type="submit">Add</button>
