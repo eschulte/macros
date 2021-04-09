@@ -46,7 +46,7 @@ function macros(food){
       return macros(foods[food])
     }
   } else if (Array.isArray(food)) {
-    return food.map(macros).reduce(macro_plus)
+    return food.map(macros).reduce(macro_plus, macro_plus({},{}))
   } else if(typeof [] === 'object'){
     return macro_plus(food, {})
   } else {

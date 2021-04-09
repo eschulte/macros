@@ -260,12 +260,16 @@ function add_food(){
 // explicit JSON serialization needed
 
 let local_variables = ["foods", "actuals", "targets"]
+var foods = undefined
+var actuals = undefined
+var targets = undefined
 
 function local_up() {
   for (symbol of local_variables) {
-    let variable = Symbol(symbol)
-    if (window.localStorage.getItem(symbol) != undefined) {
-      variable = JSON.parse(window.localStorage.getItem(symbol))
+    // if ((window.localStorage.getItem(symbol) != undefined) &&
+    //     (window.localStorage.getItem(symbol) != '{}'))
+    if (window[symbol] === undefined){
+      window[symbol] = JSON.parse(window.localStorage.getItem(symbol))
     }
   }
 }
@@ -278,7 +282,7 @@ function local_clear() {
 
 function local_down() {
   for (symbol of local_variables) {
-    window.localStorage.setItem(symbol, JSON.stringify(eval(symbol)))
+    window.localStorage.setItem(symbol, JSON.stringify(window[symbol]))
   }
 }
 
@@ -286,4 +290,10 @@ if (typeof(Storage) !== "undefined") {
   // Don't overwrite, but initialize if not already present.
 } else {
   alert("Not usable without local storage")
+}
+
+function ensure_today(){
+  if (actuals[date_string()] === undefined) {
+    actuals[date_string()] = []
+  }
 }

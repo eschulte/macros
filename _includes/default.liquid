@@ -14,12 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="{{ "/autocomplete.js" |url }}"></script>
     <script src="{{ "/macros.js" |url }}"></script>
+    <!-- <script src="{{ "/foods.js" |url }}"></script> -->
     <script src="{{ "/local.js" |url }}"></script>
     <script src="{{ "/macros-ui.js" |url }}"></script>
     <style>
-      .food:hover {
-          color: red;
-      }
+      .food:hover { color: red; }
     </style>
   </head>
 <body class="w3-light-grey">
@@ -29,6 +28,7 @@
 </body>
 <script>
   local_up()
+  ensure_today()
   show_today()
   show_foods()
   plot_radial()
