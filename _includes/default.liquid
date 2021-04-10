@@ -19,6 +19,11 @@
     <script src="{{ "/macros-ui.js" |url }}"></script>
     <style>
       .food:hover { color: red; }
+      #download {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+      }
     </style>
   </head>
 <body class="w3-light-grey">
@@ -32,6 +37,7 @@
   show_today()
   show_foods()
   plot_radial()
+  actuals_download()
   if(document.getElementById("add-food")){
     autocomplete(document.getElementById("add-food"), Object.keys(foods));
   }

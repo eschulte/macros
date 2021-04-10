@@ -234,6 +234,13 @@ function show_foods() {
   div.innerHTML = text+"</ul>"
 }
 
+function actuals_download() {
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(actuals));
+  var download_link = document.getElementById('download-link');
+  download_link.setAttribute("href",     dataStr     );
+  download_link.setAttribute("download", "actuals.json");
+}
+
 function date_string() {
   var today = new Date()
   var dd = String(today.getDate()).padStart(2, '0')

@@ -4,6 +4,7 @@ title: Macros
 ---
 
 # Today
+<button id="download"><a href="#" id="download-link"><i class="fas fa-file-download"></i></a></button>
 
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
