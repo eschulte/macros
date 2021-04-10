@@ -243,7 +243,7 @@ function date_string() {
 function drop_food(index){
   console.log("Drop food: "+index)
   actuals[date_string()].splice(index, 1)
-  local_down()
+  local_actuals_down()
   show_foods()
   plot_radial()
 }
@@ -251,39 +251,23 @@ function drop_food(index){
 function add_food(){
   actuals[date_string()].push(document.getElementById("add-food").value)
   document.getElementById("add-food").value = null
-  local_down()
+  local_actuals_down()
   show_foods()
   plot_radial()
 }
 
 // local storage:
 // explicit JSON serialization needed
-
-let local_variables = ["foods", "actuals", "targets"]
-var foods = undefined
-var actuals = undefined
-var targets = undefined
-
-function local_up() {
-  for (symbol of local_variables) {
-    // if ((window.localStorage.getItem(symbol) != undefined) &&
-    //     (window.localStorage.getItem(symbol) != '{}'))
-    if (window[symbol] === undefined){
-      window[symbol] = JSON.parse(window.localStorage.getItem(symbol))
-    }
-  }
+function local_actuals_up() {
+  actuals = JSON.parse(window.localStorage.getItem("actuals"))
 }
 
 function local_clear() {
-  for (symbol of local_variables) {
-    localStorage.removeItem(symbol)
-  }
+  localStorage.removeItem("actuals")
 }
 
-function local_down() {
-  for (symbol of local_variables) {
-    window.localStorage.setItem(symbol, JSON.stringify(window[symbol]))
-  }
+function local_actuals_down() {
+  window.localStorage.setItem("actuals", JSON.stringify(actuals))
 }
 
 if (typeof(Storage) !== "undefined") {
@@ -293,6 +277,9 @@ if (typeof(Storage) !== "undefined") {
 }
 
 function ensure_today(){
+  if ((typeof(actuals) != 'object') ||
+      actuals === null)
+    actuals = {}
   if (actuals[date_string()] === undefined) {
     actuals[date_string()] = []
   }
