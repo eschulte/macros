@@ -28,14 +28,11 @@ So for me this all works out to:
 <table id="today-content"></table></br>
 
 <form action="#" id="add-a-food" onsubmit="add_food();return false">
-<label for="food">Ate:</label>
+<label for="food">Food:</label>
 <input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
 <button type="submit">Add</button>
 </form>
-
-Foods today:
 <ul id="foods"></ul>
-
 </div>
-<div class="w3-half w3-container" id="view" style="position:relative;left:-100px;"></div>
+<div class="w3-half w3-container" id="view" style="position:relative;left:-60px;"></div>
 </div>
