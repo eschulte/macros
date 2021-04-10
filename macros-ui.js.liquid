@@ -251,7 +251,6 @@ function date_string() {
 }
 
 function drop_food(index){
-  console.log("Drop food: "+index)
   actuals[date_string()].splice(index, 1)
   local_actuals_down()
   show_foods()
