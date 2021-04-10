@@ -37,5 +37,5 @@ Foods today:
 <ul id="foods"></ul>
 
 </div>
-<div class="w3-half w3-container" id="view"></div>
+<div class="w3-half w3-container" id="view" style="position:relative;left:-100px;"></div>
 </div>
