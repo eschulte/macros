@@ -255,8 +255,9 @@ function add_food(){
   actuals[date_string()].push(document.getElementById("add-food").value.trim())
   document.getElementById("add-food").value = null
   local_actuals_down()
-  show_foods()
+  show_today()
   plot_radial()
+  show_foods()
 }
 
 // local storage:
