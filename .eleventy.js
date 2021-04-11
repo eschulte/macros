@@ -11,8 +11,11 @@ module.exports = function(eleventyConfig) {
     return md.render(content);
   });
 
-  eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("favicon.ico");
+  // Files to copy
+  // eleventyConfig.addPassthroughCopy("favicon.ico");
+
+  // Extensions to copy
+  eleventyConfig.setTemplateFormats(["css", "js", "json", "png"]);
 
   eleventyConfig.addLiquidFilter("fixDate", function(value){
     value.setTime(value.getTime() + (5*60*60*1000));
