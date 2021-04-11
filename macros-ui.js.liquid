@@ -250,21 +250,24 @@ function date_string() {
   return yyyy + "-" + mm + '-' + dd
 }
 
-function drop_food(index){
-  actuals[date_string()].splice(index, 1)
-  local_actuals_down()
+function update_ui(){
   show_today()
   plot_radial()
   show_foods()
+  actuals_download()
+}
+
+function drop_food(index){
+  actuals[date_string()].splice(index, 1)
+  local_actuals_down()
+  update_ui()
 }
 
 function add_food(){
   actuals[date_string()].push(document.getElementById("add-food").value.trim().toLowerCase())
   document.getElementById("add-food").value = null
   local_actuals_down()
-  show_today()
-  plot_radial()
-  show_foods()
+  update_ui()
 }
 
 // local storage:
