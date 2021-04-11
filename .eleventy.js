@@ -12,10 +12,16 @@ module.exports = function(eleventyConfig) {
   });
 
   // Files to copy
-  // eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("local.js");
+  eleventyConfig.addPassthroughCopy("macros-ui.js");
+  eleventyConfig.addPassthroughCopy("macros.js");
+  eleventyConfig.addPassthroughCopy("vega.min.js");
+  eleventyConfig.addPassthroughCopy("vega.min.js.map");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.pngapple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("macronutrients-carbs-protein-fat.png");
 
   // Extensions to copy
-  eleventyConfig.setTemplateFormats(["css", "js", "json", "png"]);
+  // eleventyConfig.setTemplateFormats(["css", "js", "json", "png"]);
 
   eleventyConfig.addLiquidFilter("fixDate", function(value){
     value.setTime(value.getTime() + (5*60*60*1000));

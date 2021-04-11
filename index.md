@@ -11,7 +11,7 @@ title: Macros
 
 <table id="today-content"></table></br>
 
-<label for="food">Food:</label>
+<label for="add-food">Food:</label>
 <input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
 <button type="submit" onClick="add_food();return false">Add</button>
 
