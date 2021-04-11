@@ -12,13 +12,15 @@ module.exports = function(eleventyConfig) {
   });
 
   // Files to copy
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.pngapple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("autocomplete.js");
   eleventyConfig.addPassthroughCopy("local.js");
+  eleventyConfig.addPassthroughCopy("local.js");
+  eleventyConfig.addPassthroughCopy("macronutrients-carbs-protein-fat.png");
   eleventyConfig.addPassthroughCopy("macros-ui.js");
   eleventyConfig.addPassthroughCopy("macros.js");
   eleventyConfig.addPassthroughCopy("vega.min.js");
   eleventyConfig.addPassthroughCopy("vega.min.js.map");
-  eleventyConfig.addPassthroughCopy("apple-touch-icon.pngapple-touch-icon.png");
-  eleventyConfig.addPassthroughCopy("macronutrients-carbs-protein-fat.png");
 
   // Extensions to copy
   // eleventyConfig.setTemplateFormats(["css", "js", "json", "png"]);
