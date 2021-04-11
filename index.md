@@ -11,11 +11,10 @@ title: Macros
 
 <table id="today-content"></table></br>
 
-<form action="#" id="add-a-food" onsubmit="add_food();return false">
 <label for="food">Food:</label>
 <input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
-<button type="submit">Add</button>
-</form>
+<button type="submit" onClick="add_food();return false">Add</button>
+
 <ul id="foods"></ul>
 </div>
 <div class="w3-half w3-container" id="view" style="position:relative;left:-60px;"></div>
