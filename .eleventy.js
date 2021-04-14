@@ -14,8 +14,9 @@ module.exports = function(eleventyConfig) {
   // Files to copy
   eleventyConfig.addPassthroughCopy("apple-touch-icon.pngapple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("autocomplete.js");
-  eleventyConfig.addPassthroughCopy("local.js");
-  eleventyConfig.addPassthroughCopy("local.js");
+  eleventyConfig.addPassthroughCopy("targets.json");
+  eleventyConfig.addPassthroughCopy("foods.json");
+  eleventyConfig.addPassthroughCopy("actuals.json");
   eleventyConfig.addPassthroughCopy("macronutrients-carbs-protein-fat.png");
   eleventyConfig.addPassthroughCopy("macros-ui.js");
   eleventyConfig.addPassthroughCopy("macros.js");

@@ -1,0 +1,8 @@
+// - Protein 1.2g/pound = ~220g = 1144 calories
+// - Fat: >= 20% = >=425 calories = 48g
+// - Carbs = <= 556 calories = 139g
+// - Total = maintenance - 15% = 2500–2750* 0.85 = 2125—2337
+targets = { '2021-04-03': {'total': {'calories':2230},
+                           'protein': {'grams':220, 'calories':1144},
+                           'fat': {'grams':48, 'calories':425},
+                           'carbs': {'grams':129, 'calories':139}} }
