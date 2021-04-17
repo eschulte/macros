@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Macros</title>
+    <!-- By Eric Schulte, source at https://github.com/eschulte/macros. -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal macro tracking.">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
+    <!-- <meta name="viewport" content="minimal-ui"> -->
+    <!-- PWA Stuff -->
+    <meta name="apple-mobile-web-app-title" content="Macros">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="manifest" href="manifest.webmanifest" />
+    <!-- include PWACompat _after_ your manifest -->
+    <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script>
+    <!-- Cache-Control should probably be set by the server as HTTP headers. -->
+    <!-- <meta http-equiv="Cache-Control" content="public"> -->
+    <!-- <meta http-equiv="Cache-Control" content="max-age=604800"> -->
+    <!-- <meta http-equiv="Cache-Control" content="immutable"> -->
+    <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <!-- <link rel="apple-touch-startup-image" href="/screenshot1.png"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <!-- <link rel="icon" href="/favicon.ico"> -->
+    <!-- <script src="https://vega.github.io/vega/vega.min.js"></script> -->
+    <script src="/vega.min.js"></script>
+    <script src="/autocomplete.js"></script>
+    <script src="/macros.js"></script>
+    <script src="/targets.json"></script>
+    <script src="/foods.json"></script>
+    <script src="/actuals.json"></script>
+    <script src="/macros-ui.js"></script>
+    <!-- https://developers.google.com/web/tools/workbox/guides/generate-service-worker/workbox-build -->
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
+    <style>
+      .food:hover { color: red; }
+      #download {
+          position: fixed;
+          top: 20px;
+          right: 40px;
+      }
+    </style>
+  </head>
+<body class="w3-light-grey">
+  <div class="w3-container">
+    <h1 id="today">Today</h1>
+<p><button id="download"><a href="#" id="download-link"><i class="fas fa-file-download"></i></a></button></p>
+<div class="w3-row-padding">
+<div class="w3-half w3-container">
+<table id="today-content"></table></br>
+<p><label for="add-food">Food:</label>
+<input type="text" id="add-food" name="food" autocomplete="off" style="position: relative;">
+<button type="submit" onClick="add_food();return false">Add</button></p>
+<ul id="foods"></ul>
+</div>
+<div class="w3-half w3-container" id="view" style="position:relative;left:-60px;"></div>
+</div>
+<h1 id="target-calculation">Target calculation</h1>
+<p>The instructions I've heard are to:</p>
+<ol>
+<li>Start with your <em>maintenance calories</em> and then either add or drop
+10-20% based on if you're looking more to lose weight or add
+muscle, basically based on if you're currently a little over or
+under weight.</li>
+<li>Then you calculate how much protein you should be consuming daily.
+Which for me came to 1.2g/pound.</li>
+<li>You want <em>at least</em> (you can do more) 20% of your calories from fat.</li>
+<li>I forget how carbs were calculated.</li>
+</ol>
+<p>So for me this all works out to:</p>
+<ul>
+<li>Total calories = maintenance - 15% = 2500–2750* 0.85 = 2125—2337 calories</li>
+<li>Protein 1.2g/pound = ~220g = 1144 calories</li>
+<li>Fat: &gt;= 20% = &gt;=425 calories = 48g</li>
+<li>Carbs = &lt;= 556 calories = 139g</li>
+</ul>
+
+  </div>
+</body>
+<script>
+  local_actuals_up()
+  ensure_today()
+  update_ui()
+  if(document.getElementById("add-food")){
+    autocomplete(document.getElementById("add-food"), Object.keys(foods));
+  }
+  if(! window.navigator.standalone){
+    document.getElementById("today").innerHTML = "Today_"
+  }
+</script>
+</html>
