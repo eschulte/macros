@@ -23,6 +23,7 @@ foods = {
   'ipa': {'total': {'calories':211}, 'carbs':{'grams':16}},
   'ice cream': {'total': {'calories':137}, 'protein':{'grams':2.3}, 'fat':{'grams':7.3}, 'carbs':{'grams':16}},
   // Meals
+  'pizza' : {'total': {'calories':242}, 'protein':{'grams':10.5}, 'fat':{'grams':9.5}, 'carbs':{'grams':30}},
   'ramen' : {'total': {'calories':490}, 'protein':{'grams':10}, 'fat':{'grams':15}, 'carbs':{'grams':79}},
   'ramen w/tofu': ['ramen', 'tofu'],
   'egg toast': ['egg', 'bread'],
