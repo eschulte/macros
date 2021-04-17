@@ -29,11 +29,11 @@
     // },
   ],
   "description": "You probably haven't eaten enough protein today.",
-  "screenshots": [
-    {
-      "src": "/screenshot1.png",
-      "type": "image/png",
-      "sizes": "540x720"
-    }
-  ]
+  // "screenshots": [
+  //   {
+  //     "src": "/screenshot1.png",
+  //     "type": "image/png",
+  //     "sizes": "540x720"
+  //   }
+  // ]
 }
