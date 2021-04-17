@@ -29,6 +29,13 @@
     <script src="{{ "/foods.json" |url }}"></script>
     <script src="{{ "/actuals.json" |url }}"></script>
     <script src="{{ "/macros-ui.js" |url }}"></script>
+    <!-- https://developers.google.com/web/tools/workbox/guides/generate-service-worker/workbox-build -->
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
     <style>
       .food:hover { color: red; }
       #download {
