@@ -5,17 +5,23 @@
     <!-- By Eric Schulte, source at https://github.com/eschulte/macros. -->
     <meta charset="UTF-8">
     <meta name="description" content="Personal macro tracking.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
+    <!-- <meta name="viewport" content="minimal-ui"> -->
+    <!-- PWA Stuff -->
+    <meta name="apple-mobile-web-app-title" content="Macros">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="manifest" href="manifest.webmanifest" />
+    <!-- include PWACompat _after_ your manifest -->
+    <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script>
     <!-- Cache-Control should probably be set by the server as HTTP headers. -->
-    <meta http-equiv="Cache-Control" content="public">
-    <meta http-equiv="Cache-Control" content="max-age=604800">
-    <meta http-equiv="Cache-Control" content="immutable">
-    <link rel="icon" href="{{ "/macronutrients-carbs-protein-fat.png" |url }}">
-    <link rel="apple-touch-icon" href="{{ "/macronutrients-carbs-protein-fat.png" |url }}">
-    <link rel="apple-touch-startup-image" href="{{ "/macronutrients-carbs-protein-fat.png" |url }}">
-    <link rel="apple-mobile-web-app-title" content="Macros">
-    <link rel="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-mobile-web-app-status-bar-style" content="translucent black">
+    <!-- <meta http-equiv="Cache-Control" content="public"> -->
+    <!-- <meta http-equiv="Cache-Control" content="max-age=604800"> -->
+    <!-- <meta http-equiv="Cache-Control" content="immutable"> -->
+    <link rel="icon" type="image/png" href="{{ "/icon-192.png" |url }}" sizes="192x192">
+    <link rel="apple-touch-icon" href="{{ "/icon-192.png" |url }}">
+    <!-- <link rel="apple-touch-startup-image" href="{{ "/screenshot1.png" |url }}"> -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
@@ -56,6 +62,9 @@
   update_ui()
   if(document.getElementById("add-food")){
     autocomplete(document.getElementById("add-food"), Object.keys(foods));
+  }
+  if(! window.navigator.standalone){
+    document.getElementById("today").innerHTML = "Today_"
   }
 </script>
 </html>
