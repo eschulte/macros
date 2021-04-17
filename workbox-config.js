@@ -1,3 +1,4 @@
+// npx workbox generateSW workbox-config.js
 module.exports = {
 	globDirectory: '_site/',
 	globPatterns: [
@@ -7,5 +8,25 @@ module.exports = {
 		/^utm_/,
 		/^fbclid$/
 	],
-	swDest: '_site/sw.js'
+        swDest: '_site/sw.js',
+
+  // Define runtime caching rules.
+  runtimeCaching: [{
+    // Match requests to try the cache first.
+    urlPattern: /\.(?:js|json|html|css|png)$/,
+
+    // handler: 'CacheFirst',
+    handler: 'StaleWhileRevalidate',
+
+    options: {
+      // Use a custom cache name.
+      cacheName: 'images',
+
+      // Only cache 10 images.
+      expiration: {
+        maxEntries: 10,
+      },
+    },
+  }],
+
 };
