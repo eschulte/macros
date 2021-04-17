@@ -4,20 +4,20 @@
   "name": "Macros Calculator",
   "icons": [
     {
-      "src": "/icons-192.png",
+      "src": "/macros/icons-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icons-512.png",
+      "src": "/macros/icons-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "/macros",
   "background_color": "#9e9e9e",
   "display": "fullscreen",
-  "scope": "/",
+  "scope": "/macros",
   "theme_color": "#9e9e9e",
   "shortcuts": [
     // {
@@ -25,13 +25,13 @@
     //   "short_name": "Another View",
     //   "description": "View macro information for today",
     //   "url": "/today",
-    //   "icons": [{ "src": "/second-view.png", "sizes": "192x192" }]
+    //   "icons": [{ "src": "/macros/second-view.png", "sizes": "192x192" }]
     // },
   ],
   "description": "You probably haven't eaten enough protein today.",
   // "screenshots": [
   //   {
-  //     "src": "/screenshot1.png",
+  //     "src": "/macros/screenshot1.png",
   //     "type": "image/png",
   //     "sizes": "540x720"
   //   }
