@@ -7,6 +7,8 @@ module.exports = function(eleventyConfig) {
   md.use(require("markdown-it-anchor"));
   eleventyConfig.setLibrary("md", md);
 
+  pathPrefix: "/macros/";
+
   eleventyConfig.addPairedShortcode("markdown", (content) => {
     return md.render(content);
   });
