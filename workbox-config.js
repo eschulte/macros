@@ -1,8 +1,11 @@
 // npx workbox generateSW workbox-config.js
 module.exports = {
 	globDirectory: '_site/',
+	// globPatterns: [
+	// 	'**/*.{json,js,html,png}'
+	// ],
 	globPatterns: [
-		'**/*.{json,js,html,png}'
+		'**/*'
 	],
 	ignoreURLParametersMatching: [
 		/^utm_/,
@@ -13,7 +16,8 @@ module.exports = {
   // Define runtime caching rules.
   runtimeCaching: [{
     // Match requests to try the cache first.
-    urlPattern: /\.(?:js|json|html|css|png)$/,
+    // urlPattern: /\.(?:js|json|html|css|png)$/,
+    urlPattern: /.*/,
 
     // handler: 'CacheFirst',
     handler: 'StaleWhileRevalidate',
