@@ -25,9 +25,9 @@ function macro_radial_json(macros) {
   return {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "A actual and target macros.",
-    "width": 400,
-    "height": 400,
-    "padding": 20,
+    "width": 340,
+    "height": 340,
+    "padding": 0,
     "autosize": {"type": "none", "contains": "padding"},
 
     "signals": [
@@ -39,11 +39,11 @@ function macro_radial_json(macros) {
         "name": "table",
         "values": [
           {"key": "protein", "value": target_protein, "category": 0},
-          {"key": "calories/10", "value": target_cal, "category": 0},
+          {"key": "cal/10", "value": target_cal, "category": 0},
           {"key": "fat", "value": target_fat, "category": 0},
           {"key": "carbs", "value": target_carbs, "category": 0},
           {"key": "protein", "value": actual_protein, "category": 1},
-          {"key": "calories/10", "value": actual_cal, "category": 1},
+          {"key": "cal/10", "value": actual_cal, "category": 1},
           {"key": "fat", "value": actual_fat, "category": 1},
           {"key": "carbs", "value": actual_carbs, "category": 1},
         ]
