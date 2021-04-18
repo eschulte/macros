@@ -7,7 +7,6 @@
     <link rel="manifest" href="{{ "/manifest.json" |url }}" />
     <link rel="icon" href="{{ "/icons-192.png" |url }}" type="image/png" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
     <link rel="stylesheet" href="{{ "/w3.css" |url }}">
     <link rel="icon" href="{{ "/favicon.ico" |url }}">
     <link rel="apple-touch-icon" href="{{ "/icon-512.png" |url }}">
@@ -20,10 +19,13 @@
     <script src="{{ "/macros-ui.js" |url }}"></script>
     <style>
       .food:hover { color: red; }
-      #download {
+      .download {
           position: fixed;
           top: 20px;
-          right: 40px;
+          right: 20px;
+      }
+      .dead {
+          opacity: 0.125;
       }
       .network-message {
           font-weight: 200;

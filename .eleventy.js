@@ -14,7 +14,6 @@ module.exports = function(eleventyConfig) {
   });
 
   // Files to copy
-  // eleventyConfig.addPassthroughCopy("all.css");
   eleventyConfig.addPassthroughCopy("actuals.json");
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
