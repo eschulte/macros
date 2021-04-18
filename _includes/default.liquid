@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="manifest" href="{{ "/manifest.json" |url }}" />
     <link rel="icon" href="{{ "/icons-192.png" |url }}" type="image/png" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
+    <link rel="icon" href="{{ "/favicon.ico" |url }}">
+    <link rel="apple-touch-icon" href="{{ "/icon-512.png" |url }}">
+    <link rel="apple-touch-startup-image" href="{{ "/icon-512.png" |url }}">
     <script src="{{ "/vega.min.js" |url }}"></script>
     <script src="{{ "/autocomplete.js" |url }}"></script>
     <script src="{{ "/macros.js" |url }}"></script>
@@ -26,18 +30,20 @@
       .network-message {
           font-weight: 200;
           position: fixed;
-          bottom: 32px;
-          right: 32px;
+          top: 20px;
+          left: 45%;
+          text-align: center;
+          font-size: x-small;
       }
     </style>
   </head>
-<body class="w3-light-grey">
+<body class="w3-dark-grey w3-text-light-grey-">
   <div class="w3-container">
     {{ content | safe }}
   </div>
   <div class="network-message">
-    Network:
-    <span id="network-status" class="">Good</span>
+    Network: <span id="network-status" class="">?</span></br>
+    Standalone: <span id="standalone-status" class="">?</span></br>
   </div>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
@@ -47,12 +53,18 @@
         });
     }
 
-    fetch('./data.json')
+    // fetch('./data.json')
 
-    var statusEl = document.querySelector('#network-status')
-    if (!navigator.onLine) {
-      statusEl.classList = ['is-offline']
-      statusEl.innerText = 'Offline'
+    if (navigator.onLine) {
+      document.getElementById('network-status').innerText = 'Online'
+    } else {
+      document.getElementById('network-status').classList = ['is-offline']
+      document.getElementById('network-status').innerText = 'Offline'
+    }
+    if(window.navigator.standalone){
+      document.getElementById("standalone-status").innerHTML = "Yes"
+    } else {
+      document.getElementById("standalone-status").innerHTML = "No"
     }
 
     local_actuals_up()
@@ -60,11 +72,6 @@
     update_ui()
     if(document.getElementById("add-food")){
       autocomplete(document.getElementById("add-food"), Object.keys(foods));
-    }
-    if(window.navigator.standalone){
-      document.getElementById("today").innerHTML = "Today+"
-    } else {
-      document.getElementById("today").innerHTML = "Today-"
     }
   </script>
 </body>

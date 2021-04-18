@@ -15,7 +15,8 @@ module.exports = function(eleventyConfig) {
 
   // Files to copy
   eleventyConfig.addPassthroughCopy("actuals.json");
-  // eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("autocomplete.js");
   eleventyConfig.addPassthroughCopy("foods.json");
   eleventyConfig.addPassthroughCopy("icons-192.png");
