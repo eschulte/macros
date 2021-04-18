@@ -100,8 +100,10 @@ Which for me came to 1.2g/pound.</li>
     ensure_today()
     update_ui()
     if(document.getElementById("add-food")){
-      autocomplete(document.getElementById("add-food"), Object.keys(foods));
+      autocomplete(document.getElementById("add-food"), Object.keys(foods))
     }
+
+    document.getElementById("today").innerHTML = date_string()
   </script>
 </body>
 </html>
