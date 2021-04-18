@@ -14,6 +14,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Files to copy
+  eleventyConfig.addPassthroughCopy("all.css");
   eleventyConfig.addPassthroughCopy("actuals.json");
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
@@ -29,6 +30,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("targets.json");
   eleventyConfig.addPassthroughCopy("vega.min.js");
   eleventyConfig.addPassthroughCopy("vega.min.js.map");
+  eleventyConfig.addPassthroughCopy("w3.css");
 
   // Extensions to copy
   // eleventyConfig.setTemplateFormats(["css", "js", "json", "png"]);
