@@ -32,4 +32,5 @@ foods = {
   'soy sauce pan fried noodles': {'total': {'calories':387}, 'protein':{'grams':9}, 'fat':{'grams':25}, 'carbs':{'grams':35}},
   'kung pao chicken': {'total': {'calories':635}, 'protein':{'grams':20}, 'fat':{'grams':48}, 'carbs':{'grams':34}},
   'mapo tofu': {'total': {'calories':501}, 'protein':{'grams':22}, 'fat':{'grams':35}, 'carbs':{'grams':21}},
+  'chicken broccoli': {'total': {'calories':260}, 'protein':{'grams':29}, 'fat':{'grams':8}, 'carbs':{'grams':17}},
 }
