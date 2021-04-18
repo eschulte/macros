@@ -5,7 +5,7 @@ module.exports = {
 	// 	'**/*.{json,js,html,png}'
 	// ],
 	globPatterns: [
-		'**/*'
+		'macros/**/*'
 	],
 	ignoreURLParametersMatching: [
 		/^utm_/,
