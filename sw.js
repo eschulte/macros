@@ -1,9 +1,12 @@
-
 console.log('Script loaded!')
-var cacheStorageKey = 'minimal-pwa-8'
+var cacheStorageKey = 'macros'
 
 var cacheList = [
-  '/macros/',
+  // Mirroring the whole site caused problems trying to load fontawesome
+  // "Origin Resource Sharing policy:
+  //  Origin http://localhost:8080 is not allowed by Access-Control-Allow-Origin."
+  //
+  // '/macros/',
   '/macros/apple-touch-icon.png',
   '/macros/autocomplete.js',
   '/macros/favicon.ico',
