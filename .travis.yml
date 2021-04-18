@@ -5,7 +5,7 @@ before_script:
   - npm install @11ty/eleventy -g
   - npm install markdown-it markdown-it-anchor
 script:
-  - eleventy --pathprefix=macros
+  - eleventy
 deploy:
   local-dir: _site
   provider: pages

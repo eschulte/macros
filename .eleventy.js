@@ -1,4 +1,6 @@
-const config = {};
+const config = {
+  pathPrefix: "/macros/"
+};
 
 module.exports = function(eleventyConfig) {
   // Customized Markdown Export.
@@ -6,8 +8,6 @@ module.exports = function(eleventyConfig) {
   let md = markdownIt({html: true})
   md.use(require("markdown-it-anchor"));
   eleventyConfig.setLibrary("md", md);
-
-  pathPrefix: "/macros/";
 
   eleventyConfig.addPairedShortcode("markdown", (content) => {
     return md.render(content);
