@@ -14,10 +14,10 @@ function macro_table(macros) {
 
 function macro_radial_json(macros) {
   let tgt = get_target()
-  let actual_cal = macros['total']['calories']
-  let target_cal = tgt['total']['calories']
   let actual_protein = macros['protein']['grams']
   let target_protein = tgt['protein']['grams']
+  let actual_cal = macros['total']['calories']/10
+  let target_cal = tgt['total']['calories']/10
   let actual_fat = macros['fat']['grams']
   let target_fat = tgt['fat']['grams']
   let actual_carbs = macros['carbs']['grams']
@@ -38,12 +38,12 @@ function macro_radial_json(macros) {
       {
         "name": "table",
         "values": [
-          // {"key": "calories", "value": target_cal, "category": 0},
           {"key": "protein", "value": target_protein, "category": 0},
+          {"key": "calories/10", "value": target_cal, "category": 0},
           {"key": "fat", "value": target_fat, "category": 0},
           {"key": "carbs", "value": target_carbs, "category": 0},
-          // {"key": "calories", "value": actual_cal, "category": 1},
           {"key": "protein", "value": actual_protein, "category": 1},
+          {"key": "calories/10", "value": actual_cal, "category": 1},
           {"key": "fat", "value": actual_fat, "category": 1},
           {"key": "carbs", "value": actual_carbs, "category": 1},
         ]
