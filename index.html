@@ -3,45 +3,23 @@
   <head>
     <title>Macros</title>
     <!-- By Eric Schulte, source at https://github.com/eschulte/macros. -->
-    <meta charset="UTF-8">
-    <meta name="description" content="Personal macro tracking.">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
-    <!-- <meta name="viewport" content="minimal-ui"> -->
-    <!-- PWA Stuff -->
-    <meta name="apple-mobile-web-app-title" content="Macros">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/icons-192.png" type="image/png" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="manifest" href="manifest.webmanifest" />
-    <!-- include PWACompat _after_ your manifest -->
-    <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script>
-    <!-- Cache-Control should probably be set by the server as HTTP headers. -->
-    <!-- <meta http-equiv="Cache-Control" content="public"> -->
-    <!-- <meta http-equiv="Cache-Control" content="max-age=604800"> -->
-    <!-- <meta http-equiv="Cache-Control" content="immutable"> -->
-    <link rel="icon" type="image/png" href="/macros/icon-192.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="/macros/icon-192.png">
-    <!-- <link rel="apple-touch-startup-image" href="/macros/screenshot1.png"> -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
-    <!-- <link rel="stylesheet" href="/macros/style.css"> -->
-    <!-- <link rel="icon" href="/macros/favicon.ico"> -->
-    <!-- <script src="https://vega.github.io/vega/vega.min.js"></script> -->
-    <script src="/macros/vega.min.js"></script>
-    <script src="/macros/autocomplete.js"></script>
-    <script src="/macros/macros.js"></script>
-    <script src="/macros/targets.json"></script>
-    <script src="/macros/foods.json"></script>
-    <script src="/macros/actuals.json"></script>
-    <script src="/macros/macros-ui.js"></script>
-    <!-- https://developers.google.com/web/tools/workbox/guides/generate-service-worker/workbox-build -->
-    <script>
-      // Check that service workers are supported
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js');
-      }
-    </script>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/icon-512.png">
+    <link rel="apple-touch-startup-image" href="/icon-512.png">
+    <script src="/vega.min.js"></script>
+    <script src="/autocomplete.js"></script>
+    <script src="/macros.js"></script>
+    <script src="/targets.json"></script>
+    <script src="/foods.json"></script>
+    <script src="/actuals.json"></script>
+    <script src="/macros-ui.js"></script>
     <style>
       .food:hover { color: red; }
       #download {
@@ -49,9 +27,17 @@
           top: 20px;
           right: 40px;
       }
+      .network-message {
+          font-weight: 200;
+          position: fixed;
+          top: 20px;
+          left: 45%;
+          text-align: center;
+          font-size: x-small;
+      }
     </style>
   </head>
-<body class="w3-light-grey">
+<body class="w3-dark-grey w3-text-light-grey-">
   <div class="w3-container">
     <h1 id="today">Today</h1>
 <p><button id="download"><a href="#" id="download-link"><i class="fas fa-file-download"></i></a></button></p>
@@ -86,16 +72,38 @@ Which for me came to 1.2g/pound.</li>
 </ul>
 
   </div>
+  <div class="network-message">
+    Network: <span id="network-status" class="">?</span></br>
+    Standalone: <span id="standalone-status" class="">?</span></br>
+  </div>
+  <script type="text/javascript">
+    if (navigator.serviceWorker != null) {
+      navigator.serviceWorker.register('sw.js')
+        .then(function(registration) {
+          console.log('Registered events at scope: ', registration.scope);
+        });
+    }
+
+    // fetch('./data.json')
+
+    if (navigator.onLine) {
+      document.getElementById('network-status').innerText = 'Online'
+    } else {
+      document.getElementById('network-status').classList = ['is-offline']
+      document.getElementById('network-status').innerText = 'Offline'
+    }
+    if(window.navigator.standalone){
+      document.getElementById("standalone-status").innerHTML = "Yes"
+    } else {
+      document.getElementById("standalone-status").innerHTML = "No"
+    }
+
+    local_actuals_up()
+    ensure_today()
+    update_ui()
+    if(document.getElementById("add-food")){
+      autocomplete(document.getElementById("add-food"), Object.keys(foods));
+    }
+  </script>
 </body>
-<script>
-  local_actuals_up()
-  ensure_today()
-  update_ui()
-  if(document.getElementById("add-food")){
-    autocomplete(document.getElementById("add-food"), Object.keys(foods));
-  }
-  if(! window.navigator.standalone){
-    document.getElementById("today").innerHTML = "Today_"
-  }
-</script>
 </html>

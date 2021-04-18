@@ -128,7 +128,7 @@ function macro_radial_json(macros) {
                 "text": {"signal": "datum.datum.value"},
                 "align": {"value": "center"},
                 "baseline": {"value": "middle"},
-                "fill": {"value": "black"}
+                "fill": {"value": "lightgray"}
               }
             }
           }
@@ -180,7 +180,7 @@ function macro_radial_json(macros) {
                 "value": "bottom"
               }
             ],
-            "fill": {"value": "black"},
+            "fill": {"value": "lightgray"},
             "fontWeight": {"value": "bold"}
           }
         }

@@ -1,2 +1,56 @@
-if(!self.define){const e=e=>{"require"!==e&&(e+=".js");let r=Promise.resolve();return i[e]||(r=new Promise((async r=>{if("document"in self){const i=document.createElement("script");i.src=e,document.head.appendChild(i),i.onload=r}else importScripts(e),r()}))),r.then((()=>{if(!i[e])throw new Error(`Module ${e} didn’t register its module`);return i[e]}))},r=(r,i)=>{Promise.all(r.map(e)).then((e=>i(1===e.length?e[0]:e)))},i={require:Promise.resolve(r)};self.define=(r,s,n)=>{i[r]||(i[r]=Promise.resolve().then((()=>{let i={};const o={uri:location.origin+r.slice(1)};return Promise.all(s.map((r=>{switch(r){case"exports":return i;case"module":return o;default:return e(r)}}))).then((e=>{const r=n(...e);return i.default||(i.default=r),i}))})))}}define("./sw.js",["./workbox-076caa6d"],(function(e){"use strict";self.addEventListener("message",(e=>{e.data&&"SKIP_WAITING"===e.data.type&&self.skipWaiting()})),e.precacheAndRoute([{url:"_eleventy_redirect/index.html",revision:"8873500ffddd74451457bdaaf87a3872"},{url:"autocomplete.js",revision:"abc4dcd640df5f329f5c19e38f69ff28"},{url:"foods.json",revision:"3d7cae714d357bee04882aaab311e683"},{url:"icons-192.png",revision:"f832355d899827ea9d7b9b9146256159"},{url:"icons-512.png",revision:"2363c47bf03d23d829ff332fa04c531f"},{url:"index.html",revision:"e3320a25eed809b6a0da181dc511964d"},{url:"macros-ui.js",revision:"9788808d4f68e831a9ed8d7b5c34b0c2"},{url:"macros.js",revision:"a9fbf6f994c8f928703c397a411964a8"},{url:"manifest.webmanifest",revision:"3b6ca441644f8bb5d48088e684909836"},{url:"screenshot1.png",revision:"98472104cbe86ebe0c508a8a3a4e5f3b"},{url:"targets.json",revision:"e410dc7a121d2332f624f76bc45f7b48"},{url:"vega.min.js",revision:"2d86d970ba0821636fbddc56eaa71751"},{url:"vega.min.js.map",revision:"16ee163af563b4796c72e61cd92e32ed"}],{ignoreURLParametersMatching:[/^utm_/,/^fbclid$/]}),e.registerRoute(/.*/,new e.StaleWhileRevalidate({cacheName:"images",plugins:[new e.ExpirationPlugin({maxEntries:10,purgeOnQuotaError:!0})]}),"GET")}));
-//# sourceMappingURL=sw.js.map
+
+console.log('Script loaded!')
+var cacheStorageKey = 'minimal-pwa-8'
+
+var cacheList = [
+  '/',
+  "index.html",
+  "main.css",
+  "e.png",
+  "pwa-fonts.png"
+]
+
+self.addEventListener('install', function(e) {
+  console.log('Cache event!')
+  e.waitUntil(
+    caches.open(cacheStorageKey).then(function(cache) {
+      console.log('Adding to Cache:', cacheList)
+      return cache.addAll(cacheList)
+    }).then(function() {
+      console.log('Skip waiting!')
+      return self.skipWaiting()
+    })
+  )
+})
+
+self.addEventListener('activate', function(e) {
+  console.log('Activate event')
+  e.waitUntil(
+    Promise.all(
+      caches.keys().then(cacheNames => {
+        return cacheNames.map(name => {
+          if (name !== cacheStorageKey) {
+            return caches.delete(name)
+          }
+        })
+      })
+    ).then(() => {
+      console.log('Clients claims.')
+      return self.clients.claim()
+    })
+  )
+})
+
+self.addEventListener('fetch', function(e) {
+  // console.log('Fetch event:', e.request.url)
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      if (response != null) {
+        console.log('Using cache for:', e.request.url)
+        return response
+      }
+      console.log('Fallback to fetch:', e.request.url)
+      return fetch(e.request.url)
+    })
+  )
+})
