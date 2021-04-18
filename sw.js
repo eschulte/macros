@@ -21,6 +21,7 @@ var cacheList = [
   '/macros/targets.json',
   '/macros/vega.min.js',
   '/macros/vega.min.js.map',
+  '/macros/w3.css',
 ]
 
 self.addEventListener('install', function(e) {
@@ -36,26 +37,8 @@ self.addEventListener('install', function(e) {
   )
 })
 
-self.addEventListener('activate', function(e) {
-  console.log('Activate event')
-  e.waitUntil(
-    Promise.all(
-      caches.keys().then(cacheNames => {
-        return cacheNames.map(name => {
-          if (name !== cacheStorageKey) {
-            return caches.delete(name)
-          }
-        })
-      })
-    ).then(() => {
-      console.log('Clients claims.')
-      return self.clients.claim()
-    })
-  )
-})
-
 self.addEventListener('fetch', function(e) {
-  // console.log('Fetch event:', e.request.url)
+  console.log('Fetch event:', e.request.url)
   e.respondWith(
     caches.match(e.request).then(function(response) {
       if (response != null) {

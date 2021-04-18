@@ -7,7 +7,6 @@
     <link rel="manifest" href="/macros/manifest.json" />
     <link rel="icon" href="/macros/icons-192.png" type="image/png" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
     <link rel="stylesheet" href="/macros/w3.css">
     <link rel="icon" href="/macros/favicon.ico">
     <link rel="apple-touch-icon" href="/macros/icon-512.png">
@@ -20,10 +19,13 @@
     <script src="/macros/macros-ui.js"></script>
     <style>
       .food:hover { color: red; }
-      #download {
+      .download {
           position: fixed;
           top: 20px;
-          right: 40px;
+          right: 20px;
+      }
+      .dead {
+          opacity: 0.125;
       }
       .network-message {
           font-weight: 200;
@@ -38,7 +40,10 @@
 <body class="w3-dark-grey w3-text-light-grey-">
   <div class="w3-container">
     <h1 id="today">Today</h1>
-<p><button id="download"><a href="#" id="download-link"><i class="fas fa-file-download"></i></a></button></p>
+<div class="download">
+<button><a href="#" id="download-link">↧</a></button>
+<button class="dead"><a href="#" id="upload-link">↥</a></button>
+</div>
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
 <table id="today-content"></table></br>
