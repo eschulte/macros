@@ -21,6 +21,7 @@ var cacheList = [
   '/macros/targets.json',
   '/macros/vega.min.js',
   '/macros/vega.min.js.map',
+  '/macros/w3.css',
 ]
 
 self.addEventListener('install', function(e) {
