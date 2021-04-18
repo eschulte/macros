@@ -3,11 +3,21 @@ console.log('Script loaded!')
 var cacheStorageKey = 'minimal-pwa-8'
 
 var cacheList = [
-  '/',
-  "index.html",
-  "main.css",
-  "e.png",
-  "pwa-fonts.png"
+  '/macros/',
+  '/macros/apple-touch-icon.png',
+  '/macros/autocomplete.js',
+  '/macros/favicon.ico',
+  '/macros/foods.json',
+  '/macros/icons-192.png',
+  '/macros/icons-512.png',
+  '/macros/index.html',
+  '/macros/macros-ui.js',
+  '/macros/macros.js',
+  '/macros/manifest.json',
+  '/macros/sw.js',
+  '/macros/targets.json',
+  '/macros/vega.min.js',
+  '/macros/vega.min.js.map',
 ]
 
 self.addEventListener('install', function(e) {

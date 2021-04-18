@@ -2,7 +2,7 @@
   "name": "Macros",
   "short_name": "Macro Tracker",
   "display": "standalone",
-  "start_url": "/",
+  "start_url": "/macros/",
   "theme_color": "#9e9e9e",
   "background_color": "#9e9e9e",
   "icons": [
