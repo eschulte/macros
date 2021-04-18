@@ -15,16 +15,16 @@ module.exports = function(eleventyConfig) {
 
   // Files to copy
   eleventyConfig.addPassthroughCopy("actuals.json");
-  eleventyConfig.addPassthroughCopy("apple-touch-icon.pngapple-touch-icon.png");
+  // eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("autocomplete.js");
   eleventyConfig.addPassthroughCopy("foods.json");
   eleventyConfig.addPassthroughCopy("icons-192.png");
   eleventyConfig.addPassthroughCopy("icons-512.png");
-  eleventyConfig.addPassthroughCopy("macronutrients-carbs-protein-fat.png");
   eleventyConfig.addPassthroughCopy("macros-ui.js");
   eleventyConfig.addPassthroughCopy("macros.js");
-  eleventyConfig.addPassthroughCopy("manifest.webmanifest");
-  eleventyConfig.addPassthroughCopy("screenshot1.png");
+  eleventyConfig.addPassthroughCopy("manifest.json");
+  eleventyConfig.addPassthroughCopy("sw.js");
+  // eleventyConfig.addPassthroughCopy("screenshot1.png");
   eleventyConfig.addPassthroughCopy("targets.json");
   eleventyConfig.addPassthroughCopy("vega.min.js");
   eleventyConfig.addPassthroughCopy("vega.min.js.map");

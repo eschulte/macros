@@ -3,31 +3,12 @@
   <head>
     <title>{{ title }}</title>
     <!-- By Eric Schulte, source at https://github.com/eschulte/macros. -->
-    <meta charset="UTF-8">
-    <meta name="description" content="Personal macro tracking.">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> -->
-    <!-- <meta name="viewport" content="minimal-ui"> -->
-    <!-- PWA Stuff -->
-    <meta name="apple-mobile-web-app-title" content="Macros">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="manifest" href="manifest.webmanifest" />
-    <!-- include PWACompat _after_ your manifest -->
-    <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script>
-    <!-- Cache-Control should probably be set by the server as HTTP headers. -->
-    <!-- <meta http-equiv="Cache-Control" content="public"> -->
-    <!-- <meta http-equiv="Cache-Control" content="max-age=604800"> -->
-    <!-- <meta http-equiv="Cache-Control" content="immutable"> -->
-    <link rel="icon" type="image/png" href="{{ "/icon-192.png" |url }}" sizes="192x192">
-    <link rel="apple-touch-icon" href="{{ "/icon-192.png" |url }}">
-    <!-- <link rel="apple-touch-startup-image" href="{{ "/screenshot1.png" |url }}"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="manifest" href="{{ "/manifest.json" |url }}" />
+    <link rel="icon" href="{{ "/icons-192.png" |url }}" type="image/png" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.4.0/css/all.css">
-    <!-- <link rel="stylesheet" href="{{ "/style.css"|url }}"> -->
-    <!-- <link rel="icon" href="{{ "/favicon.ico" |url }}"> -->
-    <!-- <script src="https://vega.github.io/vega/vega.min.js"></script> -->
     <script src="{{ "/vega.min.js" |url }}"></script>
     <script src="{{ "/autocomplete.js" |url }}"></script>
     <script src="{{ "/macros.js" |url }}"></script>
@@ -35,13 +16,6 @@
     <script src="{{ "/foods.json" |url }}"></script>
     <script src="{{ "/actuals.json" |url }}"></script>
     <script src="{{ "/macros-ui.js" |url }}"></script>
-    <!-- https://developers.google.com/web/tools/workbox/guides/generate-service-worker/workbox-build -->
-    <script>
-      // Check that service workers are supported
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js');
-      }
-    </script>
     <style>
       .food:hover { color: red; }
       #download {
@@ -49,22 +23,49 @@
           top: 20px;
           right: 40px;
       }
+      .network-message {
+          font-weight: 200;
+          position: fixed;
+          bottom: 32px;
+          right: 32px;
+      }
     </style>
   </head>
 <body class="w3-light-grey">
   <div class="w3-container">
     {{ content | safe }}
   </div>
+  <div class="network-message">
+    Network:
+    <span id="network-status" class="">Good</span>
+  </div>
+  <script type="text/javascript">
+    if (navigator.serviceWorker != null) {
+      navigator.serviceWorker.register('sw.js')
+        .then(function(registration) {
+          console.log('Registered events at scope: ', registration.scope);
+        });
+    }
+
+    fetch('./data.json')
+
+    var statusEl = document.querySelector('#network-status')
+    if (!navigator.onLine) {
+      statusEl.classList = ['is-offline']
+      statusEl.innerText = 'Offline'
+    }
+
+    local_actuals_up()
+    ensure_today()
+    update_ui()
+    if(document.getElementById("add-food")){
+      autocomplete(document.getElementById("add-food"), Object.keys(foods));
+    }
+    if(window.navigator.standalone){
+      document.getElementById("today").innerHTML = "Today+"
+    } else {
+      document.getElementById("today").innerHTML = "Today-"
+    }
+  </script>
 </body>
-<script>
-  local_actuals_up()
-  ensure_today()
-  update_ui()
-  if(document.getElementById("add-food")){
-    autocomplete(document.getElementById("add-food"), Object.keys(foods));
-  }
-  if(! window.navigator.standalone){
-    document.getElementById("today").innerHTML = "Today_"
-  }
-</script>
 </html>
