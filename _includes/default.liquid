@@ -75,7 +75,12 @@
       autocomplete(document.getElementById("add-food"), Object.keys(foods))
     }
 
-    document.getElementById("today").innerHTML = date_string()
+    var today = document.getElementById("today");
+    today.innerHTML = date_string();
+    today.addEventListener("touchstart", handle_start, false);
+    today.addEventListener("touchmove", handle_move, false);
+    today.addEventListener("touchcancel", handle_cancel, false);
+    today.addEventListener("touchend", handle_end, false);
   </script>
 </body>
 </html>

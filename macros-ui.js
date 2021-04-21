@@ -298,3 +298,39 @@ function ensure_today(){
     actuals[date_string()] = []
   }
 }
+
+// Touch Events
+var touch_start = false
+
+function handle_start(event){
+  event.preventDefault()
+  // console.log("touch start")
+  touch_start = event.changedTouches[0].pageX
+}
+
+function handle_move(event){
+  event.preventDefault()
+  // console.log("touch move")
+  let touch_now = event.changedTouches[0].pageX
+  if(touch_start){
+    // console.log("Moving "+touch_start+" to "+touch_now)
+    if((touch_now - touch_start) < 0){
+      console.log("Backwards")
+    } else if((touch_now - touch_start) > 0){
+      console.log("Forwards")
+    }
+    touch_start = false
+  }
+}
+
+function handle_cancel(event){
+  event.preventDefault()
+  // console.log("touch cancel")
+  touch_start = false
+}
+
+function handle_end(event){
+  event.preventDefault()
+  // console.log("touch end")
+  touch_start = false
+}
