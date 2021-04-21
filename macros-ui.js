@@ -203,7 +203,9 @@ function macro_radial_json(macros) {
   }
 }
 
-var view;
+var view
+
+var date_offset = 0
 
 function plot_radial(){
   let spec = macro_radial_json(macros(date_string()))
@@ -241,8 +243,14 @@ function actuals_download() {
   download_link.setAttribute("download", "actuals.json");
 }
 
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 function date_string() {
-  var today = new Date()
+  var today = new Date().addDays(date_offset)
   var dd = String(today.getDate()).padStart(2, '0')
   var mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
   var yyyy = today.getFullYear()
@@ -255,6 +263,7 @@ function update_ui(){
   plot_radial()
   show_foods()
   actuals_download()
+  document.getElementById("today").innerHTML = date_string()
 }
 
 function drop_food(index){
@@ -304,33 +313,29 @@ var touch_start = false
 
 function handle_start(event){
   event.preventDefault()
-  // console.log("touch start")
   touch_start = event.changedTouches[0].pageX
 }
 
 function handle_move(event){
   event.preventDefault()
-  // console.log("touch move")
   let touch_now = event.changedTouches[0].pageX
   if(touch_start){
-    // console.log("Moving "+touch_start+" to "+touch_now)
     if((touch_now - touch_start) < 0){
-      console.log("Backwards")
+      date_offset = date_offset - 1
     } else if((touch_now - touch_start) > 0){
-      console.log("Forwards")
+      date_offset = date_offset + 1
     }
     touch_start = false
+    update_ui()
   }
 }
 
 function handle_cancel(event){
   event.preventDefault()
-  // console.log("touch cancel")
   touch_start = false
 }
 
 function handle_end(event){
   event.preventDefault()
-  // console.log("touch end")
   touch_start = false
 }
