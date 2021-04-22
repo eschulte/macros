@@ -339,3 +339,27 @@ function handle_end(event){
   event.preventDefault()
   touch_start = false
 }
+
+// Actuals Paste
+function show_actuals_paste(){
+  document.getElementById("paste-actuals-container").style.display = "block"
+}
+
+function hide_actuals_paste(){
+  document.getElementById("paste-actuals-container").style.display = "none"
+}
+
+function toggle_actuals_paste(){
+  if((document.getElementById("paste-actuals-container").style.display == "none") ||
+     (document.getElementById("paste-actuals-container").style.display == "")){
+    show_actuals_paste()
+  } else {
+    hide_actuals_paste()
+  }
+}
+
+function add_actuals(){
+  actuals = JSON.parse(actuals[date_string()].push(document.getElementById("paste-actuals").value.trim().toLowerCase()))
+  document.getElementById("paste-actuals").value = "Paste actuals JSON here."
+  hide_actuals_paste()
+}

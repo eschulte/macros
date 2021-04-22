@@ -36,7 +36,7 @@
           text-align: center;
           font-size: x-small;
       }
-      #upload-actuals-container{
+      #paste-actuals-container{
           display: none;
           position: absolute;
           top: 40%;
@@ -44,7 +44,7 @@
           width: 90%;
           z-index: 10;
       }
-      #upload-actuals{
+      #paste-actuals{
           width: 100%;
       }
     </style>
@@ -57,10 +57,14 @@
     Network: <span id="network-status" class="">?</span></br>
     Standalone: <span id="standalone-status" class="">?</span></br>
   </div>
-  <div id="upload-actuals-container">
+  <div id="paste-actuals-container">
   <label for="actuals">Actuals:</label></br>
-  <textarea id="upload-actuals" name="actuals" autocomplete="off" rows="5"></textarea>
-  <button type="submit" onClick="add_actuals();return false">Upload</button>
+  <textarea id="paste-actuals" name="actuals" autocomplete="off" rows="3">
+
+    Paste actuals JSON here.
+
+  </textarea>
+  <button type="submit" onClick="add_actuals();return false">Submit</button>
   </div>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
