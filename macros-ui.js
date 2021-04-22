@@ -321,9 +321,9 @@ function handle_move(event){
   let touch_now = event.changedTouches[0].pageX
   if(touch_start){
     if((touch_now - touch_start) < 0){
-      date_offset = date_offset - 1
-    } else if((touch_now - touch_start) > 0){
       date_offset = date_offset + 1
+    } else if((touch_now - touch_start) > 0){
+      date_offset = date_offset - 1
     }
     touch_start = false
     update_ui()
