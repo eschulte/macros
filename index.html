@@ -27,6 +27,9 @@
       .dead {
           opacity: 0.125;
       }
+      .exchange {
+          text-decoration: none;
+      }
       .network-message {
           display: none;
           font-weight: 200;
@@ -53,8 +56,9 @@
   <div class="w3-container">
     <h1 id="today">Today</h1>
 <div class="download">
-<button><a href="#" id="download-link">↧</a></button>
-<button><a href="#" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
+<button><a href="#" class="exchange" id="download-link">↧</a></button>
+<button><a href="#" class="exchange" id="refresh-link" onclick="refresh(); return false">⟳</a></button>
+<button><a href="#" class="exchange" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
 </div>
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
