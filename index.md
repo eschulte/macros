@@ -5,8 +5,9 @@ title: Macros
 
 # Today
 <div class="download">
-<button><a href="#" id="download-link">↧</a></button>
-<button><a href="#" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
+<button><a href="#" class="exchange" id="download-link">↧</a></button>
+<button><a href="#" class="exchange" id="refresh-link" onclick="refresh(); return false">⟳</a></button>
+<button><a href="#" class="exchange" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
 </div>
 
 <div class="w3-row-padding">
