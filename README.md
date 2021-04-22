@@ -9,7 +9,8 @@ https://eschulte.github.io/macros/
 
 - [ ] "Target" editing and local storage
 - [ ] "Food" editing and remote storage
-- [ ] Switch the day with a global integer history variable
-- [ ] Upload?
+- [X] Switch the day with a global integer history variable
+- [X] Actuals Upload?
+- [X] Add a button to force a refresh of all assets
 - [ ] Update service worker to periodically refresh assets in background
 - [ ] Show graph of macros over time
