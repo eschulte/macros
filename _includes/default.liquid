@@ -36,6 +36,17 @@
           text-align: center;
           font-size: x-small;
       }
+      #upload-actuals-container{
+          display: none;
+          position: absolute;
+          top: 40%;
+          left: 5%;
+          width: 90%;
+          z-index: 10;
+      }
+      #upload-actuals{
+          width: 100%;
+      }
     </style>
   </head>
 <body class="w3-dark-grey w3-text-light-grey-">
@@ -45,6 +56,11 @@
   <div class="network-message">
     Network: <span id="network-status" class="">?</span></br>
     Standalone: <span id="standalone-status" class="">?</span></br>
+  </div>
+  <div id="upload-actuals-container">
+  <label for="actuals">Actuals:</label></br>
+  <textarea id="upload-actuals" name="actuals" autocomplete="off" rows="5"></textarea>
+  <button type="submit" onClick="add_actuals();return false">Upload</button>
   </div>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
