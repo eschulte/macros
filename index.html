@@ -36,6 +36,17 @@
           text-align: center;
           font-size: x-small;
       }
+      #paste-actuals-container{
+          display: none;
+          position: absolute;
+          top: 40%;
+          left: 5%;
+          width: 90%;
+          z-index: 10;
+      }
+      #paste-actuals{
+          width: 100%;
+      }
     </style>
   </head>
 <body class="w3-dark-grey w3-text-light-grey-">
@@ -43,7 +54,7 @@
     <h1 id="today">Today</h1>
 <div class="download">
 <button><a href="#" id="download-link">↧</a></button>
-<button class="dead"><a href="#" id="upload-link">↥</a></button>
+<button><a href="#" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
 </div>
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
@@ -80,6 +91,15 @@ Which for me came to 1.2g/pound.</li>
     Network: <span id="network-status" class="">?</span></br>
     Standalone: <span id="standalone-status" class="">?</span></br>
   </div>
+  <div id="paste-actuals-container">
+  <label for="actuals">Actuals:</label></br>
+  <textarea id="paste-actuals" name="actuals" autocomplete="off" rows="3">
+
+    Paste actuals JSON here.
+
+  </textarea>
+  <button type="submit" onClick="add_actuals();return false">Submit</button>
+  </div>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
       navigator.serviceWorker.register('sw.js')
@@ -109,7 +129,11 @@ Which for me came to 1.2g/pound.</li>
       autocomplete(document.getElementById("add-food"), Object.keys(foods))
     }
 
-    document.getElementById("today").innerHTML = date_string()
+    var today = document.getElementById("today");
+    today.addEventListener("touchstart", handle_start, false);
+    today.addEventListener("touchmove", handle_move, false);
+    today.addEventListener("touchcancel", handle_cancel, false);
+    today.addEventListener("touchend", handle_end, false);
   </script>
 </body>
 </html>

@@ -203,7 +203,9 @@ function macro_radial_json(macros) {
   }
 }
 
-var view;
+var view
+
+var date_offset = 0
 
 function plot_radial(){
   let spec = macro_radial_json(macros(date_string()))
@@ -241,8 +243,14 @@ function actuals_download() {
   download_link.setAttribute("download", "actuals.json");
 }
 
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 function date_string() {
-  var today = new Date()
+  var today = new Date().addDays(date_offset)
   var dd = String(today.getDate()).padStart(2, '0')
   var mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
   var yyyy = today.getFullYear()
@@ -255,6 +263,7 @@ function update_ui(){
   plot_radial()
   show_foods()
   actuals_download()
+  document.getElementById("today").innerHTML = date_string()
 }
 
 function drop_food(index){
@@ -297,4 +306,60 @@ function ensure_today(){
   if (actuals[date_string()] === undefined) {
     actuals[date_string()] = []
   }
+}
+
+// Touch Events
+var touch_start = false
+
+function handle_start(event){
+  event.preventDefault()
+  touch_start = event.changedTouches[0].pageX
+}
+
+function handle_move(event){
+  event.preventDefault()
+  let touch_now = event.changedTouches[0].pageX
+  if(touch_start){
+    if((touch_now - touch_start) < 0){
+      date_offset = date_offset - 1
+    } else if((touch_now - touch_start) > 0){
+      date_offset = date_offset + 1
+    }
+    touch_start = false
+    update_ui()
+  }
+}
+
+function handle_cancel(event){
+  event.preventDefault()
+  touch_start = false
+}
+
+function handle_end(event){
+  event.preventDefault()
+  touch_start = false
+}
+
+// Actuals Paste
+function show_actuals_paste(){
+  document.getElementById("paste-actuals-container").style.display = "block"
+}
+
+function hide_actuals_paste(){
+  document.getElementById("paste-actuals-container").style.display = "none"
+}
+
+function toggle_actuals_paste(){
+  if((document.getElementById("paste-actuals-container").style.display == "none") ||
+     (document.getElementById("paste-actuals-container").style.display == "")){
+    show_actuals_paste()
+  } else {
+    hide_actuals_paste()
+  }
+}
+
+function add_actuals(){
+  actuals = JSON.parse(actuals[date_string()].push(document.getElementById("paste-actuals").value.trim().toLowerCase()))
+  document.getElementById("paste-actuals").value = "Paste actuals JSON here."
+  hide_actuals_paste()
 }

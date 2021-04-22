@@ -34,7 +34,9 @@ function macros(food){
           return portion(match[1], macros(match[2]))
         } else {
           if(/\d\d\d\d-\d\d-\d\d/.test(food)){
-            throw("empty day: "+food)
+            console.error("empty day: "+food)
+            actuals[food] = []
+            return macros(actuals[food])
           } else {
             throw("undefined food: '"+food+"'")
           }
