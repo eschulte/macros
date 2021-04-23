@@ -24,7 +24,9 @@ foods = {
   'gin and coke': ['gin', '0.5xcoke'],
   'whiskey coke': ['whiskey', '0.5xcoke'],
   'ipa': {'total': {'calories':211}, 'carbs':{'grams':16}},
+  // Desserts
   'ice cream': {'total': {'calories':137}, 'protein':{'grams':2.3}, 'fat':{'grams':7.3}, 'carbs':{'grams':16}},
+  'tarte tropezienne': {'total': {'calories':317}, 'protein':{'grams':6.7}, 'fat':{'grams':18}, 'carbs':{'grams':31}},  
   // Meals
   'pizza' : {'total': {'calories':242}, 'protein':{'grams':10.5}, 'fat':{'grams':9.5}, 'carbs':{'grams':30}},
   'ramen' : {'total': {'calories':490}, 'protein':{'grams':10}, 'fat':{'grams':15}, 'carbs':{'grams':79}},
