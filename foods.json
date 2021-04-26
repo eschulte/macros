@@ -38,4 +38,5 @@ foods = {
   'kung pao chicken': {'total': {'calories':635}, 'protein':{'grams':20}, 'fat':{'grams':48}, 'carbs':{'grams':34}},
   'mapo tofu': {'total': {'calories':501}, 'protein':{'grams':22}, 'fat':{'grams':35}, 'carbs':{'grams':21}},
   'chicken broccoli': {'total': {'calories':260}, 'protein':{'grams':29}, 'fat':{'grams':8}, 'carbs':{'grams':17}},
+  'fried rice': {'total': {'calories':327}, 'protein':{'grams':15}, 'fat':{'grams':11}, 'carbs':{'grams':41}},
 }
