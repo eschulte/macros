@@ -7,6 +7,7 @@ https://eschulte.github.io/macros/
 
 ## Todo
 
+- [ ] Fix the service worker background sync
 - [ ] "Target" editing and local storage
 - [ ] "Food" editing and remote storage
 - [X] Switch the day with a global integer history variable
