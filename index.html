@@ -42,7 +42,7 @@
       #paste-actuals-container{
           display: none;
           position: absolute;
-          top: 40%;
+          top: 5%;
           left: 5%;
           width: 90%;
           z-index: 10;
@@ -56,9 +56,17 @@
   <div class="w3-container">
     <h1 id="today">Today</h1>
 <div class="download">
-<button><a href="#" class="exchange" id="download-link">↧</a></button>
-<button><a href="#" class="exchange" id="refresh-link" onclick="refresh(); return false">⟳</a></button>
-<button><a href="#" class="exchange" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
+<button><a href="#" class="exchange" id="upload-link" onclick="toggle_actuals_paste(); return false">↧↥</a></button>
+</div>
+<div class="network-message">
+  Network: <span id="network-status" class="">?</span></br>
+  Standalone: <span id="standalone-status" class="">?</span></br>
+</div>
+<div id="paste-actuals-container">
+<label for="actuals">Actuals:</label></br>
+<textarea id="paste-actuals" name="actuals" autocomplete="off" rows="24"></textarea>
+<button type="submit" onClick="add_actuals();return false">Submit</button>
+<button type="clear" onClick="toggle_actuals_paste();return false">Clear</button>
 </div>
 <div class="w3-row-padding">
 <div class="w3-half w3-container">
@@ -90,19 +98,6 @@ Which for me came to 1.2g/pound.</li>
 <li>Carbs = &lt;= 556 calories = 139g</li>
 </ul>
 
-  </div>
-  <div class="network-message">
-    Network: <span id="network-status" class="">?</span></br>
-    Standalone: <span id="standalone-status" class="">?</span></br>
-  </div>
-  <div id="paste-actuals-container">
-  <label for="actuals">Actuals:</label></br>
-  <textarea id="paste-actuals" name="actuals" autocomplete="off" rows="3">
-
-    Paste actuals JSON here.
-
-  </textarea>
-  <button type="submit" onClick="add_actuals();return false">Submit</button>
   </div>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {

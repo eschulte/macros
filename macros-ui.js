@@ -236,13 +236,6 @@ function show_foods() {
   div.innerHTML = text+"</ul>"
 }
 
-function actuals_download() {
-  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(actuals));
-  var download_link = document.getElementById('download-link');
-  download_link.setAttribute("href",     dataStr     );
-  download_link.setAttribute("download", "actuals.json");
-}
-
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
@@ -262,7 +255,6 @@ function update_ui(){
   show_today()
   plot_radial()
   show_foods()
-  actuals_download()
   document.getElementById("today").innerHTML = date_string()
 }
 
@@ -350,6 +342,7 @@ function handle_end(event){
 // Actuals Paste
 function show_actuals_paste(){
   document.getElementById("paste-actuals-container").style.display = "block"
+  document.getElementById("paste-actuals").value = JSON.stringify(actuals)
 }
 
 function hide_actuals_paste(){
@@ -370,19 +363,4 @@ function add_actuals(){
   actuals = JSON.parse(actuals_string)
   document.getElementById("paste-actuals").value = "Paste actuals JSON here."
   hide_actuals_paste()
-}
-
-function refresh(){
-  // fetch('./apple-touch-icon.png')
-  fetch('./autocomplete.js')
-  // fetch('./favicon.ico')
-  fetch('./foods.json')
-  // fetch('./icons-192.png')
-  // fetch('./icons-512.png')
-  fetch('./index.html')
-  fetch('./macros-ui.js')
-  fetch('./macros.js')
-  fetch('./manifest.json')
-  fetch('./sw.js')
-  fetch('./targets.json')
 }
