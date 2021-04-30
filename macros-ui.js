@@ -371,18 +371,3 @@ function add_actuals(){
   document.getElementById("paste-actuals").value = "Paste actuals JSON here."
   hide_actuals_paste()
 }
-
-function refresh(){
-  // fetch('./apple-touch-icon.png')
-  fetch('./autocomplete.js')
-  // fetch('./favicon.ico')
-  fetch('./foods.json')
-  // fetch('./icons-192.png')
-  // fetch('./icons-512.png')
-  fetch('./index.html')
-  fetch('./macros-ui.js')
-  fetch('./macros.js')
-  fetch('./manifest.json')
-  fetch('./sw.js')
-  fetch('./targets.json')
-}
