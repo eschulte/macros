@@ -8,7 +8,7 @@ https://eschulte.github.io/macros/
 ## Todo
 
 - [X] Fix the service worker background sync
-- [ ] Consolidate actual copy/paste into a single textarea
+- [X] Consolidate actual copy/paste into a single textarea
 - [ ] "Target" editing and local storage
 - [ ] "Food" editing and remote storage
 - [X] Graceful bad food handling

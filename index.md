@@ -5,8 +5,18 @@ title: Macros
 
 # Today
 <div class="download">
-<button><a href="#" class="exchange" id="download-link">↧</a></button>
-<button><a href="#" class="exchange" id="upload-link" onclick="toggle_actuals_paste(); return false">↥</a></button>
+<button><a href="#" class="exchange" id="upload-link" onclick="toggle_actuals_paste(); return false">↧↥</a></button>
+</div>
+
+<div class="network-message">
+  Network: <span id="network-status" class="">?</span></br>
+  Standalone: <span id="standalone-status" class="">?</span></br>
+</div>
+<div id="paste-actuals-container">
+<label for="actuals">Actuals:</label></br>
+<textarea id="paste-actuals" name="actuals" autocomplete="off" rows="24"></textarea>
+<button type="submit" onClick="add_actuals();return false">Submit</button>
+<button type="clear" onClick="toggle_actuals_paste();return false">Clear</button>
 </div>
 
 <div class="w3-row-padding">

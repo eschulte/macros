@@ -42,7 +42,7 @@
       #paste-actuals-container{
           display: none;
           position: absolute;
-          top: 40%;
+          top: 5%;
           left: 5%;
           width: 90%;
           z-index: 10;
@@ -55,19 +55,6 @@
 <body class="w3-dark-grey w3-text-light-grey-">
   <div class="w3-container">
     {{ content | safe }}
-  </div>
-  <div class="network-message">
-    Network: <span id="network-status" class="">?</span></br>
-    Standalone: <span id="standalone-status" class="">?</span></br>
-  </div>
-  <div id="paste-actuals-container">
-  <label for="actuals">Actuals:</label></br>
-  <textarea id="paste-actuals" name="actuals" autocomplete="off" rows="3">
-
-    Paste actuals JSON here.
-
-  </textarea>
-  <button type="submit" onClick="add_actuals();return false">Submit</button>
   </div>
   <script type="text/javascript">
     if (navigator.serviceWorker != null) {
