@@ -363,4 +363,5 @@ function add_actuals(){
   actuals = JSON.parse(actuals_string)
   document.getElementById("paste-actuals").value = "Paste actuals JSON here."
   hide_actuals_paste()
+  update_ui()
 }
