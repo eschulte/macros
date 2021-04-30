@@ -361,7 +361,7 @@ function toggle_actuals_paste(){
 function add_actuals(){
   let actuals_string = document.getElementById("paste-actuals").value.trim().toLowerCase()
   actuals = JSON.parse(actuals_string)
-  document.getElementById("paste-actuals").value = "Paste actuals JSON here."
   hide_actuals_paste()
+  local_actuals_down()
   update_ui()
 }
