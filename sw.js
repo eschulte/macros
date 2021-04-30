@@ -33,7 +33,10 @@ self.addEventListener('install', function(e) {
   )
 })
 
+// Background refresh from:
+// https://serviceworke.rs/strategy-cache-update-and-refresh_service-worker_doc.html
 self.addEventListener('fetch', function(e) {
+  // Quick response.
   e.respondWith(
     caches.match(e.request).then(function(response) {
       if (response != null) {
@@ -42,4 +45,26 @@ self.addEventListener('fetch', function(e) {
       return fetch(e.request.url)
     })
   )
+  // Initiate background refresh.
+  e.waitUntil(
+    caches.open(cacheStorageKey).then(function (cache) {
+      return fetch(e.request).then(function (response) {
+        return cache.put(e.request, response.clone()).then(function () {
+          return response
+        })
+      })
+    })
+    // Refresh once the new content is loaded.
+  ).then(function(response){
+    return self.clients.matchAll().then(function (clients) {
+      clients.forEach(function (client) {
+        var message = {
+          type: 'refresh',
+          url: response.url,
+          eTag: response.headers.get('ETag')
+        }
+        client.postMessage(JSON.stringify(message))
+      })
+    })
+  })
 })

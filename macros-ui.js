@@ -275,8 +275,15 @@ function drop_food(index){
 function add_food(){
   actuals[date_string()].push(document.getElementById("add-food").value.trim().toLowerCase())
   document.getElementById("add-food").value = null
-  local_actuals_down()
-  update_ui()
+  try{
+    local_actuals_down()
+    update_ui()
+  }
+  catch(err){
+    alert(err)
+    actuals[date_string()].pop()
+    local_actuals_down()
+  }
 }
 
 // local storage:
