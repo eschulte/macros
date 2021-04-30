@@ -7,9 +7,10 @@ https://eschulte.github.io/macros/
 
 ## Todo
 
-- [ ] Fix the service worker background sync
+- [X] Fix the service worker background sync
 - [ ] "Target" editing and local storage
 - [ ] "Food" editing and remote storage
+- [X] Graceful bad food handling
 - [X] Switch the day with a global integer history variable
 - [X] Actuals Upload?
 - [X] Add a button to force a refresh of all assets
