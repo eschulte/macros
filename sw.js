@@ -33,10 +33,6 @@ self.addEventListener('install', function(e) {
   )
 })
 
-function failureCallback(error) {
-  console.error("Error: " + error);
-}
-
 // Background refresh from:
 // https://serviceworke.rs/strategy-cache-update-and-refresh_service-worker_doc.html
 self.addEventListener('fetch', function(e) {
@@ -74,5 +70,5 @@ self.addEventListener('fetch', function(e) {
         client.postMessage(JSON.stringify(message))
       })
     })
-  }).catch(failureCallback)
+  })
 })
