@@ -264,8 +264,12 @@ function drop_food(index){
   update_ui()
 }
 
+String.prototype.clean = function(){
+  return this.trim().toLowerCase().replaceAll(/[””"']/g, "\"")
+}
+
 function add_food(){
-  actuals[date_string()].push(document.getElementById("add-food").value.trim().toLowerCase())
+  actuals[date_string()].push(document.getElementById("add-food").value.clean())
   document.getElementById("add-food").value = null
   try{
     local_actuals_down()
@@ -276,6 +280,14 @@ function add_food(){
     actuals[date_string()].pop()
     local_actuals_down()
   }
+}
+
+function add_actuals(){
+  let actuals_string = document.getElementById("paste-actuals").value.clean()
+  actuals = JSON.parse(actuals_string)
+  hide_actuals_paste()
+  local_actuals_down()
+  update_ui()
 }
 
 // local storage:
@@ -356,12 +368,4 @@ function toggle_actuals_paste(){
   } else {
     hide_actuals_paste()
   }
-}
-
-function add_actuals(){
-  let actuals_string = document.getElementById("paste-actuals").value.trim().toLowerCase()
-  actuals = JSON.parse(actuals_string)
-  hide_actuals_paste()
-  local_actuals_down()
-  update_ui()
 }
