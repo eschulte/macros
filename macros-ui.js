@@ -203,19 +203,152 @@ function macro_radial_json(macros) {
   }
 }
 
+function macro_line_json(actuals) {
+  values = []
+  for(date of Object.keys(actuals)){
+    mac = macros(actuals[date])
+    values.push({"x": date, "y": mac['total']['calories']/10, "c":"cal/10"})
+    values.push({"x": date, "y": mac['protein']['grams'], "c":"protein"})
+    values.push({"x": date, "y": mac['fat']['grams'], "c":"fat"})
+    values.push({"x": date, "y": mac['carbs']['grams'], "c":"carbs"})
+  }
+
+  return {
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "Macros by day.",
+    "width": 340,
+    "height": 340,
+    "padding": 0,
+
+    "signals": [
+      {
+        "name": "interpolate",
+        "value": "monotone",
+        // "bind": {
+        //   "input": "select",
+        //   "options": [
+        //     "basis",
+        //     "cardinal",
+        //     "catmull-rom",
+        //     "linear",
+        //     "monotone",
+        //     "natural",
+        //     "step",
+        //     "step-after",
+        //     "step-before"
+        //   ]
+        // }
+      }
+    ],
+
+    "data": [
+      {
+        "name": "table",
+        "values": values
+      }
+    ],
+
+    "scales": [
+      {
+        "name": "x",
+        "type": "point",
+        "range": "width",
+        "domain": {"data": "table", "field": "x"}
+      },
+      {
+        "name": "y",
+        "type": "linear",
+        "range": "height",
+        "nice": true,
+        "zero": true,
+        "domain": {"data": "table", "field": "y"}
+      },
+      {
+        "name": "color",
+        "type": "ordinal",
+        "range": "category",
+        "domain": {"data": "table", "field": "c"}
+      }
+    ],
+
+    "axes": [
+      {"orient": "bottom", "scale": "x","labelOverlap":true, "labelColor":"lightgray"},
+      {"orient": "left", "scale": "y", "labelColor":"lightgray"}
+    ],
+
+    "legends": [
+      {
+        "fill": "color",
+        "labelColor":"lightgray",
+        "title": "Macro",
+        "titleColor":"lightgray",
+        "orient": "top-left",
+        "encode": {
+          "symbols": {
+            "enter": {
+              "fillOpacity": {"value": 0.5}
+            }
+          },
+        }
+      }
+    ],
+
+    "marks": [
+      {
+        "type": "group",
+        "from": {
+          "facet": {
+            "name": "series",
+            "data": "table",
+            "groupby": "c"
+          }
+        },
+        "marks": [
+          {
+            "type": "line",
+            "from": {"data": "series"},
+            "encode": {
+              "enter": {
+                "x": {"scale": "x", "field": "x"},
+                "y": {"scale": "y", "field": "y"},
+                "stroke": {"scale": "color", "field": "c"},
+                "strokeWidth": {"value": 2}
+              },
+              "update": {
+                "interpolate": {"signal": "interpolate"},
+                "strokeOpacity": {"value": 1}
+              },
+              "hover": {
+                "strokeOpacity": {"value": 0.5}
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
 var view
 
 var date_offset = 0
 
-function plot_radial(){
-  let spec = macro_radial_json(macros(date_string()))
+function plot(spec){
   view = new vega.View(vega.parse(spec),
                        {
                          renderer:  'canvas',  // renderer (canvas or svg)
                          container: '#view',   // parent DOM container
                          hover:     true       // enable hover processing
                        })
-  return view.runAsync();
+  return view.runAsync()
+}
+
+function plot_radial(){
+  return plot(macro_radial_json(macros(date_string())))
+}
+
+function plot_line(){
+  return plot(macro_line_json(actuals))
 }
 
 function show_today() {
