@@ -87,7 +87,7 @@
 
     var today = document.getElementById("today");
     today.addEventListener("touchstart", handle_start, false);
-    today.addEventListener("touchmove", handle_move, false);
+    today.addEventListener("touchmove", handle_move("today"), false);
     today.addEventListener("touchcancel", handle_cancel, false);
     today.addEventListener("touchend", handle_end, false);
   </script>

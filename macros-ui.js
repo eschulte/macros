@@ -327,17 +327,25 @@ function handle_start(event){
   touch_start = event.changedTouches[0].pageX
 }
 
-function handle_move(event){
-  event.preventDefault()
-  let touch_now = event.changedTouches[0].pageX
-  if(touch_start){
-    if((touch_now - touch_start) < 0){
-      date_offset = date_offset + 1
-    } else if((touch_now - touch_start) > 0){
-      date_offset = date_offset - 1
+function handle_move(id){
+  return function(event){
+    event.preventDefault()
+    let touch_now = event.changedTouches[0].pageX
+    if(touch_start){
+      if((touch_now - touch_start) < 0){
+        switch(id){
+        case "today": date_offset = date_offset + 1; break;
+        default: alert("Unknown id:'"+id+"'"); break;
+        }
+      } else if((touch_now - touch_start) > 0){
+        switch(id){
+        case "today": date_offset = date_offset - 1; break;
+        default: alert("Unknown id:'"+id+"'"); break;
+        }
+      }
+      touch_start = false
+      update_ui()
     }
-    touch_start = false
-    update_ui()
   }
 }
 
