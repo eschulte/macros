@@ -49,9 +49,13 @@ self.addEventListener('fetch', function(e) {
   e.waitUntil(
     caches.open(cacheStorageKey).then(function (cache) {
       return fetch(e.request).then(function (response) {
-        return cache.put(e.request, response.clone()).then(function () {
-          return response
-        })
+        if(e.request.method == "POST") {
+          return self.skipWaiting()
+        } else {
+          return cache.put(e.request, response.clone()).then(function () {
+            return response
+          })
+        }
       })
     })
     // Refresh once the new content is loaded.
