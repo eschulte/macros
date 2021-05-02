@@ -333,7 +333,17 @@ var view
 
 var date_offset = 0
 
-function plot(spec){
+var plot_type = "radial"
+
+function plot(){
+  switch(plot_type){
+  case "radial": return plot_radial(); break;
+  case "line": return plot_line(); break;
+  default: alert("Unknown plot type:'"+plot_type+"'"); return null; break;
+  }
+}
+
+function run_plot(spec){
   view = new vega.View(vega.parse(spec),
                        {
                          renderer:  'canvas',  // renderer (canvas or svg)
@@ -344,11 +354,11 @@ function plot(spec){
 }
 
 function plot_radial(){
-  return plot(macro_radial_json(macros(date_string())))
+  return run_plot(macro_radial_json(macros(date_string())))
 }
 
 function plot_line(){
-  return plot(macro_line_json(actuals))
+  return run_plot(macro_line_json(actuals))
 }
 
 function show_today() {
@@ -386,7 +396,7 @@ function date_string() {
 
 function update_ui(){
   show_today()
-  plot_radial()
+  plot()
   show_foods()
   document.getElementById("today").innerHTML = date_string()
 }
@@ -468,11 +478,13 @@ function handle_move(id){
       if((touch_now - touch_start) < 0){
         switch(id){
         case "today": date_offset = date_offset + 1; break;
+        case "view": plot_type = "line"; break;
         default: alert("Unknown id:'"+id+"'"); break;
         }
       } else if((touch_now - touch_start) > 0){
         switch(id){
         case "today": date_offset = date_offset - 1; break;
+        case "view": plot_type = "radial"; break;
         default: alert("Unknown id:'"+id+"'"); break;
         }
       }
