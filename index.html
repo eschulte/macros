@@ -130,9 +130,15 @@ Which for me came to 1.2g/pound.</li>
 
     var today = document.getElementById("today");
     today.addEventListener("touchstart", handle_start, false);
-    today.addEventListener("touchmove", handle_move, false);
+    today.addEventListener("touchmove", handle_move("today"), false);
     today.addEventListener("touchcancel", handle_cancel, false);
     today.addEventListener("touchend", handle_end, false);
+
+    var view_div = document.getElementById("view");
+    view_div.addEventListener("touchstart", handle_start, false);
+    view_div.addEventListener("touchmove", handle_move("view"), false);
+    view_div.addEventListener("touchcancel", handle_cancel, false);
+    view_div.addEventListener("touchend", handle_end, false);
   </script>
 </body>
 </html>
