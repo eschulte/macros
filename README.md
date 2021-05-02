@@ -18,3 +18,5 @@ https://eschulte.github.io/macros/
 - [X] Update service worker to periodically refresh assets in background
 - [ ] Show graph of macros over time
 - [ ] Slide graphs and dates when moving backwards/forwards in time
+- [ ] App instructions when normal web page on a phone
+- [ ] Slider alternatives when normal web page not on a phone (mainly for testing)
