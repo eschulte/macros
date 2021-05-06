@@ -207,10 +207,10 @@ function macro_line_json(actuals) {
   values = []
   for(date of Object.keys(actuals)){
     mac = macros(actuals[date])
-    values.push({"x": date, "y": mac['total']['calories']/10, "c":"cal/10"})
-    values.push({"x": date, "y": mac['protein']['grams'], "c":"protein"})
-    values.push({"x": date, "y": mac['fat']['grams'], "c":"fat"})
-    values.push({"x": date, "y": mac['carbs']['grams'], "c":"carbs"})
+    values.push({'x': date, 'y': mac['total']['calories']/10, 'c':'cal/10'})
+    values.push({'x': date, 'y': mac['protein']['grams'], 'c':'protein'})
+    values.push({'x': date, 'y': mac['fat']['grams'], 'c':'fat'})
+    values.push({'x': date, 'y': mac['carbs']['grams'], 'c':'carbs'})
   }
 
   return {
@@ -272,7 +272,7 @@ function macro_line_json(actuals) {
     ],
 
     "axes": [
-      {"orient": "bottom", "scale": "x","labelOverlap":true, "labelColor":"lightgray"},
+      {"orient": "bottom", "scale": "x", "labelOverlap":true, "labelColor":"lightgray"},
       {"orient": "left", "scale": "y", "labelColor":"lightgray"}
     ],
 
@@ -329,6 +329,133 @@ function macro_line_json(actuals) {
   }
 }
 
+function macro_stacked_area_json(actuals) {
+  calories_per_gram = {'protein':4,
+                       'carbs':4,
+                       'fat':9}
+
+  values = []
+  for(date of Object.keys(actuals)){
+    mac = macros(actuals[date])
+
+    calories = mac['total']['calories']
+    protein = mac['protein']['grams'] * calories_per_gram['protein']
+    fat = mac['fat']['grams'] * calories_per_gram['fat']
+    carbs = mac['carbs']['grams'] * calories_per_gram['carbs']
+    other = calories - (fat + carbs + protein)
+
+    if(other > 0){
+      values.push({'x': date, 'y': other, 'c':'other'})
+    } else {
+      values.push({'x': date, 'y': 0, 'c':'other'})
+    }
+    values.push({'x': date, 'y': protein, 'c':'protein'})
+    values.push({'x': date, 'y': fat, 'c':'fat'})
+    values.push({'x': date, 'y': carbs, 'c':'carbs'})
+  }
+
+  return {
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "Stacked macros by calorie.",
+    "width": 340,
+    "height": 340,
+    "padding": 0,
+
+    "data": [
+      {
+        "name": "table",
+        "values": values,
+        "transform": [
+          {
+            "type": "stack",
+            "groupby": ["x"],
+            "sort": {"field": "c"},
+            "field": "y"
+          }
+        ]
+      }
+    ],
+
+    "scales": [
+      {
+        "name": "x",
+        "type": "point",
+        "range": "width",
+        "domain": {"data": "table", "field": "x"}
+      },
+      {
+        "name": "y",
+        "type": "linear",
+        "range": "height",
+        "nice": true, "zero": true,
+        "domain": {"data": "table", "field": "y1"}
+      },
+      {
+        "name": "color",
+        "type": "ordinal",
+        "range": "category",
+        "domain": {"data": "table", "field": "c"}
+      }
+    ],
+
+    "axes": [
+      {"orient": "bottom", "scale": "x", "zindex": 1, "labelOverlap":true, "labelColor":"lightgray"},
+      {"orient": "left", "scale": "y", "zindex": 1, "labelColor":"lightgray"}
+    ],
+
+    "legends": [
+      {
+        "fill": "color",
+        "labelColor":"lightgray",
+        "title": "Macro",
+        "titleColor":"lightgray",
+        "orient": "top-left",
+        "encode": {
+          "symbols": {
+            "enter": {
+              "fillOpacity": {"value": 0.5}
+            }
+          },
+        }
+      }
+    ],
+
+    "marks": [
+      {
+        "type": "group",
+        "from": {
+          "facet": {
+            "name": "series",
+            "data": "table",
+            "groupby": "c"
+          }
+        },
+        "marks": [
+          {
+            "type": "area",
+            "from": {"data": "series"},
+            "encode": {
+              "enter": {
+                "interpolate": {"value": "monotone"},
+                "x": {"scale": "x", "field": "x"},
+                "y": {"scale": "y", "field": "y0"},
+                "y2": {"scale": "y", "field": "y1"},
+                "fill": {"scale": "color", "field": "c"}
+              },
+              "update": {
+                "fillOpacity": {"value": 1}
+              },
+              "hover": {
+                "fillOpacity": {"value": 0.5}
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
 var view
 
 var date_offset = 0
@@ -339,6 +466,7 @@ function plot(){
   switch(plot_type){
   case "radial": return plot_radial(); break;
   case "line": return plot_line(); break;
+  case "stacked_area": return plot_stacked_area(); break;
   default: alert("Unknown plot type:'"+plot_type+"'"); return null; break;
   }
 }
@@ -359,6 +487,10 @@ function plot_radial(){
 
 function plot_line(){
   return run_plot(macro_line_json(actuals))
+}
+
+function plot_stacked_area(){
+  return run_plot(macro_stacked_area_json(actuals))
 }
 
 function show_today() {
@@ -478,13 +610,25 @@ function handle_move(id){
       if((touch_now - touch_start) < 0){
         switch(id){
         case "today": date_offset = date_offset + 1; break;
-        case "view": plot_type = "line"; break;
+        case "view":
+          if(plot_type == "radial"){
+            plot_type = "line";
+          } else {
+            plot_type = "radial";
+          }
+          break;
         default: alert("Unknown id:'"+id+"'"); break;
         }
       } else if((touch_now - touch_start) > 0){
         switch(id){
         case "today": date_offset = date_offset - 1; break;
-        case "view": plot_type = "radial"; break;
+        case "view":
+          if(plot_type == "radial"){
+            plot_type = "stacked_area";
+          } else {
+            plot_type = "radial";
+          }
+          break;
         default: alert("Unknown id:'"+id+"'"); break;
         }
       }
