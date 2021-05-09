@@ -16,8 +16,8 @@ function macro_radial_json(macros) {
   let tgt = get_target()
   let actual_protein = macros['protein']['grams']
   let target_protein = tgt['protein']['grams']
-  let actual_cal = macros['total']['calories']/10
-  let target_cal = tgt['total']['calories']/10
+  let actual_cal = +(macros['total']['calories']/10).toFixed(2)
+  let target_cal = +(tgt['total']['calories']/10).toFixed(2)
   let actual_fat = macros['fat']['grams']
   let target_fat = tgt['fat']['grams']
   let actual_carbs = macros['carbs']['grams']
@@ -207,7 +207,7 @@ function macro_line_json(actuals) {
   values = []
   for(date of Object.keys(actuals)){
     mac = macros(actuals[date])
-    values.push({'x': date, 'y': mac['total']['calories']/10, 'c':'cal/10'})
+    values.push({'x': date, 'y': +(mac['total']['calories']/10).toFixed(2), 'c':'cal/10'})
     values.push({'x': date, 'y': mac['protein']['grams'], 'c':'protein'})
     values.push({'x': date, 'y': mac['fat']['grams'], 'c':'fat'})
     values.push({'x': date, 'y': mac['carbs']['grams'], 'c':'carbs'})
