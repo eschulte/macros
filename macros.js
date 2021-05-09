@@ -18,10 +18,10 @@ function macro_plus(one, two){
 }
 
 function portion(portion, base) {
-  return {'total': {'calories': (base['total'] && base['total']['calories'] || 0) * portion },
-          'protein':{'grams': (base['protein'] && base['protein']['grams'] || 0) * portion },
-          'fat':{'grams': (base['fat'] && base['fat']['grams'] || 0) * portion },
-          'carbs':{'grams': (base['carbs'] && base['carbs']['grams'] || 0) * portion }}
+  return {'total': {'calories': +((base['total'] && base['total']['calories'] || 0) * portion).toFixed(2) },
+          'protein':{'grams': +((base['protein'] && base['protein']['grams'] || 0) * portion).toFixed(2) },
+          'fat':{'grams': +((base['fat'] && base['fat']['grams'] || 0) * portion).toFixed(2) },
+          'carbs':{'grams': +((base['carbs'] && base['carbs']['grams'] || 0) * portion).toFixed(2) }}
 }
 
 function macros(food){
