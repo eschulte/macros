@@ -11,6 +11,7 @@ foods = {
   'whey': {'total': {'calories':130}, 'protein':{'grams':25}, 'fat':{'grams':2.5}, 'carbs':{'grams':2}},
   'broccoli': {'total': {'calories':31}, 'protein':{'grams':2.5}, 'carbs':{'grams':6}},
   'avocado': {'total': {'calories':227}, 'protein':{'grams':2.7}, 'carbs':{'grams':12}, 'fat':{'grams':21}},
+  'corn on the cob': {'total': {'calories':147.6}, 'protein':{'grams':5.2}, 'carbs':{'grams':28.6}, 'fat':{'grams':2.2}},
   'spinach': {'total': {'calories':14}, 'protein':{'grams':1.72}},
   'banana': {'total': {'calories':110}, 'protein':{'grams':1}, 'carbs':{'grams':28}},
   'tofu' : {'total': {'calories':83}, 'protein':{'grams':10}, 'fat':{'grams':5}, 'carbs':{'grams':2}},
@@ -30,6 +31,8 @@ foods = {
   'cake': {'total': {'calories':506}, 'protein':{'grams':5.7}, 'fat':{'grams':22.6}, 'carbs':{'grams':75.3}},  
   // Meals
   'pizza' : {'total': {'calories':242}, 'protein':{'grams':10.5}, 'fat':{'grams':9.5}, 'carbs':{'grams':30}},
+  'tj mac' : {'total': {'calories':360}, 'protein':{'grams':16}, 'fat':{'grams':15}, 'carbs':{'grams':42}},
+  'tj nuggets' : {'total': {'calories':200}, 'protein':{'grams':16}, 'fat':{'grams':5}, 'carbs':{'grams':21}},
   'ramen' : {'total': {'calories':490}, 'protein':{'grams':10}, 'fat':{'grams':15}, 'carbs':{'grams':79}},
   'ramen w/tofu': ['ramen', 'tofu'],
   'egg toast': ['egg', 'bread'],
