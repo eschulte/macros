@@ -31,6 +31,7 @@ foods = {
   'cake': {'total': {'calories':506}, 'protein':{'grams':5.7}, 'fat':{'grams':22.6}, 'carbs':{'grams':75.3}},  
   // Meals
   'pizza' : {'total': {'calories':242}, 'protein':{'grams':10.5}, 'fat':{'grams':9.5}, 'carbs':{'grams':30}},
+  'tj mac' : {'total': {'calories':360}, 'protein':{'grams':16}, 'fat':{'grams':15}, 'carbs':{'grams':42}},
   'ramen' : {'total': {'calories':490}, 'protein':{'grams':10}, 'fat':{'grams':15}, 'carbs':{'grams':79}},
   'ramen w/tofu': ['ramen', 'tofu'],
   'egg toast': ['egg', 'bread'],
