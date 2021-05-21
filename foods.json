@@ -35,6 +35,7 @@ foods = {
   'ice cream': {'total': {'calories':137}, 'protein':{'grams':2.3}, 'fat':{'grams':7.3}, 'carbs':{'grams':16}},
   'tarte tropezienne': {'total': {'calories':317}, 'protein':{'grams':6.7}, 'fat':{'grams':18}, 'carbs':{'grams':31}},  
   'cake': {'total': {'calories':506}, 'protein':{'grams':5.7}, 'fat':{'grams':22.6}, 'carbs':{'grams':75.3}},  
+  'cookie': {'total': {'calories':221}, 'protein':{'grams':2.3}, 'fat':{'grams':11}, 'carbs':{'grams':29}},  
   // Meals
   'blt' : {'total': {'calories':549}, 'protein':{'grams':16.2}, 'fat':{'grams':34}, 'carbs':{'grams':42.5}},
   'chicken broccoli': {'total': {'calories':260}, 'protein':{'grams':29}, 'fat':{'grams':8}, 'carbs':{'grams':17}},
