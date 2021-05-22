@@ -33,6 +33,7 @@ foods = {
   'light beer': {'total': {'calories':100}, 'carbs':{'grams':12.5}, 'fat':{'grams':5.6}},
   // Desserts
   'ice cream': {'total': {'calories':137}, 'protein':{'grams':2.3}, 'fat':{'grams':7.3}, 'carbs':{'grams':16}},
+  'hershey bar': {'total': {'calories':220}, 'protein':{'grams':3}, 'fat':{'grams':13}, 'carbs':{'grams':26}},
   'tarte tropezienne': {'total': {'calories':317}, 'protein':{'grams':6.7}, 'fat':{'grams':18}, 'carbs':{'grams':31}},  
   'cake': {'total': {'calories':506}, 'protein':{'grams':5.7}, 'fat':{'grams':22.6}, 'carbs':{'grams':75.3}},  
   'cookie': {'total': {'calories':221}, 'protein':{'grams':2.3}, 'fat':{'grams':11}, 'carbs':{'grams':29}},  
