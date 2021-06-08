@@ -1,6 +1,6 @@
 foods = {
   'bread' :  {'total':{'calories':120}, 'protein':{'grams':5}, 'carbs':{'grams':26}},
-  'croissant' :  {'total':{'calories':272}, 'protein':{'grams':5.5}, 'carbs':{'grams':31}, 'fat':{'grams':14}}},
+  'croissant': {'total': {'calories':272}, 'protein':{'grams':5.5}, 'fat':{'grams':14}, 'carbs':{'grams':31}},
   'muenster': {'total': {'calories':110}, 'protein':{'grams':7}, 'fat':{'grams':8}},
   'mayo': {'total': {'calories':110}, 'fat':{'grams':12}},
   'tuna': {'total': {'calories':140}, 'protein':{'grams':25}, 'fat':{'grams':5}, 'carbs':{'grams':1}},
