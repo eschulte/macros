@@ -45,6 +45,8 @@ foods = {
   'chicken thigh': {'total': {'calories':109}, 'protein':{'grams':13.5}, 'fat':{'grams':5.7}},
   'chicken breast': {'total': {'calories':284}, 'protein':{'grams':53.4}, 'fat':{'grams':6.2}},
   'turkey sausage': {'total': {'calories':90}, 'protein':{'grams':11}, 'fat':{'grams':5}, 'carbs':{'grams':1}},
+  'chicken vindaloo': {'total': {'calories':416}, 'protein':{'grams':37}, 'fat':{'grams':20}, 'carbs':{'grams':24}},
+  'dosa': {'total': {'calories':168}, 'protein':{'grams':3.9}, 'fat':{'grams':3.7}, 'carbs':{'grams':29}},
   'egg toast': ['egg', 'bread'],
   'fried rice': {'total': {'calories':327}, 'protein':{'grams':15}, 'fat':{'grams':11}, 'carbs':{'grams':41}},
   'kung pao chicken': {'total': {'calories':635}, 'protein':{'grams':20}, 'fat':{'grams':48}, 'carbs':{'grams':34}},
