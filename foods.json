@@ -44,6 +44,7 @@ foods = {
   'chicken broccoli': {'total': {'calories':260}, 'protein':{'grams':29}, 'fat':{'grams':8}, 'carbs':{'grams':17}},
   'chicken thigh': {'total': {'calories':109}, 'protein':{'grams':13.5}, 'fat':{'grams':5.7}},
   'chicken breast': {'total': {'calories':284}, 'protein':{'grams':53.4}, 'fat':{'grams':6.2}},
+  'turkey sausage': {'total': {'calories':90}, 'protein':{'grams':11}, 'fat':{'grams':5}, 'carbs':{'grams':1}},
   'egg toast': ['egg', 'bread'],
   'fried rice': {'total': {'calories':327}, 'protein':{'grams':15}, 'fat':{'grams':11}, 'carbs':{'grams':41}},
   'kung pao chicken': {'total': {'calories':635}, 'protein':{'grams':20}, 'fat':{'grams':48}, 'carbs':{'grams':34}},
