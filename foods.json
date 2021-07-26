@@ -16,6 +16,7 @@ foods = {
   'burger': {'total': {'calories':375}, 'protein':{'grams':17.6}, 'fat':{'grams':15.7}, 'carbs':{'grams':11.7}},
   'meatball': {'total': {'calories':162}, 'protein':{'grams':8.2}, 'fat':{'grams':12.6}, 'carbs':{'grams':4.6}},
   'bacon': {'total': {'calories':343}, 'protein':{'grams':17}, 'fat':{'grams':11}, 'carbs':{'grams':44}},
+  'qorn meatless': {'total': {'calories':100}, 'protein':{'grams':15}, 'fat':{'grams':2}, 'carbs':{'grams':10}},
   'egg yolk': {'total': {'calories':55}, 'protein':{'grams':2.7}, 'fat':{'grams':4.5}},
   'egg white': {'total': {'calories':17}, 'protein':{'grams':4}},
   'whey': {'total': {'calories':130}, 'protein':{'grams':25}, 'fat':{'grams':2.5}, 'carbs':{'grams':2}},
