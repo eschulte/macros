@@ -79,6 +79,7 @@ foods = {
   'schnitzel': {'total': {'calories':300}, 'protein':{'grams':15.75}, 'fat':{'grams':19}, 'carbs':{'grams':16.5}},
   'soy sauce pan fried noodles': {'total': {'calories':387}, 'protein':{'grams':9}, 'fat':{'grams':25}, 'carbs':{'grams':35}},
   'steak': {'total': {'calories':179}, 'protein':{'grams':26}, 'fat':{'grams':7.6}},
+  'beef jerky': {'total': {'calories':70}, 'protein':{'grams':11}, 'fat':{'grams':0.5}, 'carbs':{'grams':6}},
   'street sandwich': ['2xegg', 'mayo', '2xbread', 'muenster'],
   'tj mac' : {'total': {'calories':360}, 'protein':{'grams':16}, 'fat':{'grams':15}, 'carbs':{'grams':42}},
   'tj nuggets' : {'total': {'calories':200}, 'protein':{'grams':16}, 'fat':{'grams':5}, 'carbs':{'grams':21}},
