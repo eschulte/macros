@@ -16,6 +16,7 @@ foods = {
   'cottage cheese': {'total': {'calories':110}, 'protein':{'grams':12}, 'fat':{'grams':5}, 'carbs':{'grams':5}},
   'milk': {'total': {'calories':149}, 'protein':{'grams':7.7}, 'fat':{'grams':8}, 'carbs':{'grams':11.7}},
   'egg': {'total': {'calories':78}, 'protein':{'grams':6}, 'fat':{'grams':5}},
+  'ground beef': {'total': {'calories':218}, 'protein':{'grams':24}, 'fat':{'grams':13}, 'carbs':{'grams':0}},
   'burger': {'total': {'calories':375}, 'protein':{'grams':17.6}, 'fat':{'grams':15.7}, 'carbs':{'grams':11.7}},
   'meatball': {'total': {'calories':162}, 'protein':{'grams':8.2}, 'fat':{'grams':12.6}, 'carbs':{'grams':4.6}},
   'bacon': {'total': {'calories':343}, 'protein':{'grams':17}, 'fat':{'grams':11}, 'carbs':{'grams':44}},
