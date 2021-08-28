@@ -8,6 +8,7 @@ foods = {
   'muenster': {'total': {'calories':110}, 'protein':{'grams':7}, 'fat':{'grams':8}},
   'mayo': {'total': {'calories':110}, 'fat':{'grams':12}},
   'tuna': {'total': {'calories':140}, 'protein':{'grams':25}, 'fat':{'grams':5}, 'carbs':{'grams':1}},
+  'bone broth': {'total': {'calories':45}, 'protein':{'grams':9}, 'fat':{'grams':0.5}},
   'tortilla': {'total': {'calories':150}, 'protein':{'grams':4}, 'fat':{'grams':4}, 'carbs':{'grams':24}},
   'salt pepper tofu': {'total': {'calories':260}, 'protein':{'grams':10}, 'fat':{'grams':19}, 'carbs':{'grams':14}},
   'buffalo wings': {'total': {'calories':870}, 'protein':{'grams':106}, 'fat':{'grams':48}, 'carbs':{'grams':2}},
